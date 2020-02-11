@@ -1,0 +1,58 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "postgres",
+            "dialect": "PostgreSQL",
+            "name": "postgres",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        },
+        {
+            "database": "fileserver",
+            "dialect": "PostgreSQL",
+            "name": "fileserver",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        },
+        {
+            "database": "bad003",
+            "dialect": "PostgreSQL",
+            "name": "bad003",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        },
+        {
+            "database": "bad005_ex1",
+            "dialect": "PostgreSQL",
+            "name": "bad005_ex1",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        },
+        {
+            "database": "bad004_ex2",
+            "dialect": "PostgreSQL",
+            "name": "bad004_ex2",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        },
+        {
+            "database": "tecky_project_2",
+            "dialect": "PostgreSQL",
+            "name": "tecky_project_2",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+        }
+    ]
+}

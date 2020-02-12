@@ -25,7 +25,7 @@
                 <ul class="navbar-items">
                     <li class="navbar-item"><a href="#">Subscribe</a></li>
                     <li class="navbar-item"><a href="#">Write</a></li>
-                    <li class="navbar-item"><a href="#">Sign in</a></li>
+                    <li class="navbar-item"><a href="#" data-toggle="modal" data-target="#regModal">Sign in</a></li>
                     <button type="button" class="button">Get started</button>
 
                 </ul>
@@ -162,21 +162,54 @@
                 </div>
             </div>
             <!-- get started -->
-            <div>
-                <div class="get-started">
-                    Select what you're into. We'll help you find great things to read.
+
+            <div class="get-started">
+                Select what you're into. We'll help you find great things to read.
+            </div>
+
+            <div class="get-started-btn"><button type="button">Get started</button></div>
+
+            <div class="signin-btn">Already have an account?<a href="#" data-toggle="modal" data-target="#regModal">Sign
+                    in</a>.
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Reg Modal -->
+    <div class="modal fade" id="regModal" tabindex="-1" role="dialog" aria-labelledby="regModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="panel">
+                    <div class="modalForm">
+                        <div class="modal-title">
+                            <h2>Welcome back.</h2>
+                        </div>
+                        <div class="modal-spec">Sign in to get personalized story recommendations, follow authors and
+                            topics you love, and interact with stories.</div>
+                        <div class="modalSocial">
+                            <button type="button" class="modalSocial-btn">Sign in with Google</button>
+                            <button type="button" class="modalSocial-btn">Sign in with email</button>
+                        </div>
+                        <div class="modalSign-btn">
+                            No account? <a href="#">Create one</a>
+                        </div>
+                        <div class="modalFooter">
+                            To make Medium work, we log user data and share it with service providers. Click “Sign In”
+                            above to accept Medium’s Terms of Service & Privacy Policy.
+                        </div>
+                    </div>
                 </div>
 
-                <div class="get-started-btn"><button type="button">Get started</button></div>
-
-                <div class="signin-btn">Already have an account?<a href="#"> Sign in</a>.
-                </div>
             </div>
         </div>
-
-
-
     </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>

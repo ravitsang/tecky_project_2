@@ -1,8 +1,8 @@
 import * as express from 'express';
-import * as Knex from 'knex';
+// import * as Knex from 'knex';
 
-const knexConfig = require('./knexfile');
-const knex = Knex(knexConfig('development'));
+// const knexConfig = require('./knexfile');
+// const knex = Knex(knexConfig['development']);
 
 
 

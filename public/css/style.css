@@ -149,8 +149,17 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-.modal-content {
+.modal-content.loginM {
     background: url(../images/1_4A5l12K8ize1400kV83dPw.png), url(../images/1_XVLaTKHOGlnXqvnPe2Ahaw.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left, right;
+    background-size: auto;
+    background-color: #fff;
+    border: 0;
+}
+
+.modal-content.regM {
+    background: url(../images/1_MQH4A5bsyRz4AWh5V4IfvQ.png), url(../images/1_lhbp8cxKdkDB-MgmwIPE5w.png);
     background-repeat: no-repeat, no-repeat;
     background-position: left, right;
     background-size: auto;

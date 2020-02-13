@@ -92,16 +92,22 @@
 
 /* Top bottom */
 
-.top-bottom a {
+.top-bottom{
+    display:flex;
+    justify-content: flex-end;
+    border-bottom: 1px rgba(117, 117, 117,0.5) solid;
+}
+
+.top-bottom .top-bottom-btn a {
     display: flex;
     justify-content: flex-end;
     text-decoration-line: none;
     color:rgba(42, 145, 105,0.8);
     padding:15px;
-    border-bottom: 1px rgba(117, 117, 117,0.5) solid;
+
 }
 
-.top-bottom a:hover{
+.top-bottom .top-bottom-btn a:hover{
     color:rgba(42, 145, 105,1);
 }
 

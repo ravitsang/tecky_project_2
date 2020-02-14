@@ -17,6 +17,8 @@
     "exclude": [
         "node_modules",
         "build",
-        "scripts"
+        "scripts",
+        "index.js",
+        "jest.config.js"
     ]
 }

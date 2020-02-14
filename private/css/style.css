@@ -68,6 +68,11 @@
 .tag-item, .tag-item a {
     padding: 7px;
     list-style-type: none;
+    text-decoration-line: none;
     font-size: 14px;
-    color: #000;
+    color: rgba(0,0,0,0.6);
+}
+
+.tag-item a:hover, .tag-item.is-active a{
+    color:rgba(0,0,0,1);
 }

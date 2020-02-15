@@ -1,0 +1,283 @@
+\q
+ALTER USER matthew PASSWORD 'matthewchoi95';
+\q
+SELECT * FROM pg_roles;
+DROP USER teckyio;
+SELECT * FROM pg_roles;
+\q
+\dt
+\db
+CREATE DATABASE "matthew";
+/list
+\list
+drop database tecky;
+;
+drop database tecky;
+drop database teckyIO;
+drop database teckyio;
+\list
+drop database teckyIO;
+\list
+\dt
+\connect matthew;
+\q
+ALTER USER matthew PASSWORD 'matthew';
+CREATE DATABASE teckyIO;
+\list
+drop database teckyio;
+\list
+\q
+\c teckyIO;
+\c matthew;
+CREATE DATABASE BAD003;
+/l
+\l
+\q
+\l
+drop database bad003;
+create database bad003;
+\q
+\l
+drop database bad003;
+create database bad003;
+\l
+\c bad003;
+\d+
+CREATE TABLE students(
+id SERIAL primary key,
+name VARCHAR(255) not null,
+level INTEGER not null,
+date_of_birth date
+)
+;
+\d+
+\d+ students
+DROP TABLE students;
+\d+
+\l
+drop database bad003;
+;
+;
+\c matthew
+drop database bad003;
+\l
+\c teckyIO;
+\c matthew
+drop database teckyio;
+CREATE TABLE TeckyIO;
+CREATE TeckyIO
+;
+CREATE TABLE TeckyIO;
+CREATE TABLE Teckyio
+;
+\l
+\dt
+\db
+SELECT * FROM pg_roles;
+\d+
+\l
+\d+ matthew
+\d+ postgres;
+CREATE DATABASE TEST;
+\l
+\c test
+\c matthew
+\c test;
+create table students;
+create table students(
+name varchar(255) not null);
+\d+
+\d+
+drop table students;
+\c matthew
+drop database test;
+\c
+\c postgres;
+\l
+drop database matthew;
+\l
+drop database teckyIO;
+\q
+\q
+\q
+\q
+\l
+select * from pg_roles;
+\q
+\d+
+\l
+\c teckyIO;
+CREATE TABLE BAD003(
+name VARCHAR(255) not null);
+\d+
+\l
+CREATE DATABASE TTT123;
+\;
+\l
+DROP DATABASE ttt123;
+\c matthew
+\l
+drop database matthew
+\c teckyIO
+drop database matthew
+DROP DATABASE matthew;
+;
+;
+DROP DATABASE matthew;
+\l
+\d+
+drop table bad003;
+\d+
+\c matthew
+\q
+\l
+\d+
+\q
+\q
+\c TeckyIO;
+\q
+\l
+CREATE TABLE students(
+name VARCHAR(255) not null);
+\d+
+\d+ students
+;
+drop table students;
+CREATE TABLE Students(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    level INTEGER not null,
+    date_of_birth date,
+    teacher_id integer REFERENCES teachers(id)
+);
+\l
+CREATE TABLE Teachers(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    date_of_birth date
+);
+CREATE TABLE Students(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    level INTEGER not null,
+    date_of_birth date,
+    teacher_id integer REFERENCES teachers(id)
+);
+\d+
+\d+ students
+INSERT INTO teachers ('name','level','date_of_birth') VALUES ('TEST',11,197-01-02);
+DROP TABLE students;
+drop table teachers;
+\d+
+\l
+create table test(
+username varchar(255) not null );
+\d+
+\d+ test
+\d+ test
+\d
+\d+
+drop table test
+;
+CREATE TABLE Students(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    level INTEGER not null,
+    date_of_birth date
+)
+;
+\d+ students
+\d+
+\d+ Students
+\q
+\d+
+CREATE TABLE Students(
+    id SERIAL primary key,
+    name VARCHAR(255) not null,
+    level INTEGER not null,
+    date_of_birth date
+);
+\d+
+\d+ students
+insert into Students (name,level,date_of_birth) VALUES ('Peter',25,'1995-05-15');
+insert into Students (name,level,date_of_birth) VALUES ('John',10,'1985-06-16');
+insert into Students (name,level,date_of_birth) VALUES ('Simon',20,'1987-07-17');
+SELECT * FROM Students;
+\q
+\d+
+\l+
+\q
+\d+
+\d
+\l
+CREATE DATABASE bad003;
+l
+\l
+\q
+\q
+\q
+\l
+CREATE DATABASE BAD003;
+\l
+drop database bad003;
+create database fileserver;
+\l
+\l
+\d+ fileserver
+\c fileserver
+\d+
+\d+ "user";
+\d+
+\d+
+\d+ membership
+\d+ file
+\d+ category
+\d+ 
+\d+ file
+\q
+\d+
+\l
+\c bad003
+\d+
+create table "user"(
+id SERIAL primary key,
+username varchar(255) not null,
+password varchar(255) not null,
+level varchar(255) not null
+);
+create table "file"(
+if SERIAL primary key,
+);
+create table "file")
+;
+create table "file"(
+id SERIAL primary key,
+name varchar(255) not null,
+content text not null,
+isFile boolean not null
+);
+create table "category"(
+id SERIAL primary key,
+name varchar(255) not null,
+);
+create table "category"(
+id SERIAL primary key,
+name varchar(255) not null
+);
+\q
+\l
+create database bad005;
+\q
+\l
+create database bad004ex2;
+\l
+\q
+exit
+\q
+exit
+\q
+\l
+exit
+\q
+\l
+\s project2dev

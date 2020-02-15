@@ -214,3 +214,29 @@
     font-size: 14px;
     color: gray;
 }
+
+.formClass {
+    padding: 15px;
+    width: 100%;
+}
+
+.formClass input[type="text"], .formClass input[type="password"] {
+    width: 100%;
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px #000 solid;
+}
+
+.formClass input[type="submit"] {
+    width: 95px;
+    height: 40px;
+    background-color: #000;
+    border-radius: 5px;
+    color: #fff;
+}
+
+#loginerror-message, #regerror-message {
+    color: red;
+    padding:5px;
+}

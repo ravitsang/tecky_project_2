@@ -53,6 +53,15 @@
             "port": 5432,
             "server": "localhost",
             "username": "sinwaitsang"
+        },
+        {
+            "database": "project2dev",
+            "dialect": "PostgreSQL",
+            "name": "Project2Dev",
+            "password": "matthewchoi95",
+            "port": 5432,
+            "server": "localhost",
+            "username": "matthew"
         }
     ]
 }

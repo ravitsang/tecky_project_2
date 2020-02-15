@@ -38,7 +38,7 @@ export async function seed(knex: Knex): Promise<any> {
     ]).returning('id');
 
     
-    let html = await fs.promises.readFile(path.join(__dirname,'../test3.md'));
+    let html = await fs.promises.readFile(path.join(__dirname,'../test_md/test3.md'));
 
     const article_ids = await knex('article').insert([
         { title: '# How to Scrape Data from Web Pages for Sentiment Analysis?', content: `${html}`, reading_time: 4, user_id: raviId },

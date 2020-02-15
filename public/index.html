@@ -24,7 +24,8 @@
                     <li class="navbar-item"><a href="#">Subscribe</a></li>
                     <li class="navbar-item"><a href="#">Write</a></li>
                     <li class="navbar-item"><a href="#" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
-                    <button type="button" class="button"  data-toggle="modal" data-target="#regModal">Get started</button>
+                    <button type="button" class="button" data-toggle="modal" data-target="#regModal">Get
+                        started</button>
 
                 </ul>
             </div>
@@ -169,9 +170,11 @@
                 Select what you're into. We'll help you find great things to read.
             </div>
 
-            <div class="get-started-btn"><button type="button" data-toggle="modal" data-target="#regModal">Get started</button></div>
+            <div class="get-started-btn"><button type="button" data-toggle="modal" data-target="#regModal">Get
+                    started</button></div>
 
-            <div class="signin-btn">Already have an account?<a href="#" data-toggle="modal" data-target="#loginModal">Sign
+            <div class="signin-btn">Already have an account?<a href="#" data-toggle="modal"
+                    data-target="#loginModal">Sign
                     in</a>.
             </div>
 
@@ -196,10 +199,12 @@
                             topics you love, and interact with stories.</div>
                         <div class="modalSocial">
                             <button type="button" class="modalSocial-btn">Sign in with Google</button>
-                            <button type="button" class="modalSocial-btn">Sign in with email</button>
+                            <button type="button" class="modalSocial-btn" data-dismiss="modal" data-toggle="modal"
+                                data-target="#loginEmailModal">Sign in with email</button>
                         </div>
                         <div class="modalSign-btn">
-                            No account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regModal">Create one</a>
+                            No account? <a href="#" data-dismiss="modal" data-toggle="modal"
+                                data-target="#regModal">Create one</a>
                         </div>
                         <div class="modalFooter">
                             To make Medium work, we log user data and share it with service providers. Click “Sign In”
@@ -230,15 +235,92 @@
                             your homepage, and follow authors and topics that you love.</div>
                         <div class="modalSocial">
                             <button type="button" class="modalSocial-btn">Sign up with Google</button>
-                            <button type="button" class="modalSocial-btn">Sign up with email</button>
+                            <button type="button" class="modalSocial-btn" data-dismiss="modal" data-toggle="modal"
+                            data-target="#regEmailModal">Sign up with email</button>
                         </div>
                         <div class="modalSign-btn">
-                            Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal">Sign in</a>
+                            Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal"
+                                data-target="#loginModal">Sign in</a>
                         </div>
                         <div class="modalFooter">
                             To make Medium work, we log user data and share it with service providers. Click “Sign In”
                             above to accept Medium’s Terms of Service & Privacy Policy.
                         </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Login email Modal -->
+    <div class="modal fade" id="loginEmailModal" tabindex="-1" role="dialog" aria-labelledby="loginEmailModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="panel">
+                    <div class="modalForm">
+                        <div class="modal-title">
+                            <h2>Sign in with email</h2>
+                        </div>
+                        <div class="modal-spec">Enter the mail address associated with your account, and we'll sen a
+                            magic link to your inbox</div>
+                        <div class="modalInput">
+                            <form id="login-email" method="POST"
+                                class="formClass d-flex justify-content-center align-items-center flex-wrap">
+                                <input type="text" placeholder="Your email" id="loginEmail" name="loginEmail" required/>
+                                <input type="password" placeholder="Your password" id="loginPassword" name="loginPassword" required/>
+                                <div id="loginerror-message"></div>
+                                <input type="submit" value="Continue" />
+                            </form>
+                        </div>
+                        <div class="modalFooter modalSign-btn">
+                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal"><i class="fas fa-chevron-left fa-xs"></i> All sign in
+                                options</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Reg email Modal -->
+    <div class="modal fade" id="regEmailModal" tabindex="-1" role="dialog" aria-labelledby="regEmailModal"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="panel">
+                    <div class="modalForm">
+                        <div class="modal-title">
+                            <h2>Sign up with email</h2>
+                        </div>
+                        <div class="modal-spec">Enter your email and address to create an account.</div>
+                        <div class="modalInput">
+                            <form id="reg-email" method="POST"
+                                class="formClass d-flex justify-content-center align-items-center flex-wrap">
+                                <input type="text" placeholder="Your email" id="regEmail" name="regEmail" required/>
+                                <input type="password" placeholder="Your password" id="regPassword" name="regPassword" required/>
+                                <div id="regerror-message"></div>
+                                <input type="submit" value="Continue" />
+                            </form>
+                        </div>
+                        <div class="modalFooter modalSign-btn">
+                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regModal"><i class="fas fa-chevron-left fa-xs"></i> All sign up
+                                options</a>
+                        </div>
+
                     </div>
                 </div>
 

@@ -1,4 +1,6 @@
 import * as Knex from "knex";
+import * as fs from 'fs';
+import * as path from "path";
 
 export async function seed(knex: Knex): Promise<any> {
 
@@ -35,8 +37,11 @@ export async function seed(knex: Knex): Promise<any> {
         { name: 'Sneaker' }
     ]).returning('id');
 
+    
+    let html = await fs.promises.readFile(path.join(__dirname,'../test3.md'));
+
     const article_ids = await knex('article').insert([
-        { title: '# How to Scrape Data from Web Pages for Sentiment Analysis?', content: "## Today’s project is a web scraper!", reading_time: 4, user_id: raviId },
+        { title: '# How to Scrape Data from Web Pages for Sentiment Analysis?', content: `${html}`, reading_time: 4, user_id: raviId },
         { title: '# How to Scrape Data from Web Pages', content: "- [Scrapy](https://scrapy.org/)", reading_time: 4, user_id: lexieId },
         { title: '# Get the request', content: "[** **requests](https://2.python-requests.org/en/master/).", reading_time: 4, user_id: lexieId },
         { title: '# Extract the data from the website', content: "**Make a request (1),", reading_time: 4, user_id: matthewId }

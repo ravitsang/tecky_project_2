@@ -1,0 +1,300 @@
+<figure class="fn fo fp fq fr fs cl cm paragraph-image">
+    <div class="ft fu fv fw ak">
+        <div class="cl cm fm">
+            <div class="gc r fv gd">
+                <div class="ge r">
+                    <div class="fx fy cp t u fz ak eh ga gb">
+                    </div>
+                    <noscript>
+                        <img class="cp t u fz ak" height="4000" role="presentation"
+                            src="https://miro.medium.com/max/12000/0*Nm6YR258nleQ3_PN" width="6000" />
+                    </noscript>
+                </div>
+            </div>
+        </div>
+    </div>
+    <figcaption class="bo eg gj gk gl cn cl cm gm gn bj ef">
+        Photo by
+        <a class="at cg go gp gq gr" href="https://unsplash.com/@pankajpatel?utm_source=medium&amp;utm_medium=referral"
+            rel="noopener nofollow" target="_blank">
+            Pankaj Patel
+        </a>
+        on
+        <a class="at cg go gp gq gr" href="https://unsplash.com?utm_source=medium&amp;utm_medium=referral"
+            rel="noopener nofollow" target="_blank">
+            Unsplash
+        </a>
+    </figcaption>
+</figure>
+<section class="cu cv cw cx cy">
+    <div class="n p">
+        <div class="ac ae af ag ah cz aj ak">
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="466a">
+                Axios and cheerio is a great
+                toolset to fetch and scrape the content of a static web page. But nowadays when many of the websites are
+                built as a single page application and gets rendered dynamically on the client it might not be possible
+                to get the content.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="a056">
+                Just because it’s rendered
+                asynchronously and the content is not backed into the HTML received over the wire, doesn’t mean you
+                cannot access it. You just need a different toolset which allows waiting for the content to appear.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="7d3c">
+                Let’s have a quick look on the
+                source HTML of a SPA application and the rendered result.
+            </p>
+        </div>
+    </div>
+    <div class="fs">
+        <div class="n p">
+            <div class="ig ih ii ij ik il ag im ah in aj ak">
+                <figure class="fn fo fp fq fr fs ip iq paragraph-image">
+                    <div class="ft fu fv fw ak">
+                        <div class="cl cm io">
+                            <div class="gc r fv gd">
+                                <div class="ir r">
+                                    <div class="fx fy cp t u fz ak eh ga gb">
+                                    </div>
+                                    <noscript>
+                                        <img class="cp t u fz ak" height="1538" role="presentation"
+                                            src="https://miro.medium.com/max/5584/1*rf9VXhBcni3ub-I_UHO9Ug.png"
+                                            width="2792" />
+                                    </noscript>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <figcaption class="bo eg gj gk gl cn cl cm gm gn bj ef">
+                        Screenshot of the beach volleyball standing
+                        on
+                        <a class="at cg go gp gq gr" href="https://bvopen.abrickis.me/#/standings"
+                            rel="noopener nofollow" target="_blank">
+                            https://bvopen.abrickis.me/#/standings
+                        </a>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="n p">
+        <div class="ac ae af ag ah cz aj ak">
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="855e">
+                In the screenshot above, on the
+                left, you can see a fully rendered standings table. But look at the source the browser downloaded all we
+                can notice is a single
+                <code class="gd is it iu iv b">
+     &lt;div id="#app"&gt;&lt;/div&gt;
+    </code>
+                and a
+                couple of JavaScript files and NO content. So let’s try to get the HTML content of the body.
+            </p>
+            <h1 class="gs gt dc bk bj gu de gv dg gw gx gy gz ha hb hc hd" id="b334">
+                Start with axios + cheerio
+            </h1>
+            <p class="he hf dc bk hg b hh hi hj hk hl hm hn ho hp hq hr cu" id="6320">
+                <a class="at cg go gp gq gr" href="https://github.com/axios/axios" rel="noopener nofollow"
+                    target="_blank">
+                    axios
+                </a>
+                is a “Promise based HTTP client for the browser and node.js”.
+                Because it’s an HTTP client we can use it to fetch an HTTP endpoint and receive the response with the
+                body. We can use the HTTP client to fetch not only HTML endpoint but also JSON, images, etc. And hence
+                we are responsible to handle the plain text response.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="1c30">
+                That’s where the cheerio comes to
+                help.
+                <a class="at cg go gp gq gr" href="https://github.com/cheeriojs/cheerio" rel="noopener nofollow"
+                    target="_blank">
+                    Cheerio
+                </a>
+                is a “Fast, flexible &amp; lean implementation of core jQuery
+                designed specifically for the server”. Basically, it loads and parses the HTML markup as plain text and
+                returns a DOM model we can then access and traverse in jQuery style.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="7046">
+                And because cheerio doesn’t
+                interpret the markup as a browser does. It won’t apply the CSS styles and won’t run the JavaScript and
+                the dynamically rendered content won’t be added to the DOM.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="0140">
+                As an example let’s try to get the
+                content of the body tag using axios and cheerio. In the following gist you can see that we are firing a
+                GET request (L6), then parse the response data into a DOM using cheerio (L7) and finally search for the
+                <code class="gd is it iu iv b">
+     &lt;body&gt;
+    </code>
+                element (L9) to output its HTML content.
+            </p>
+            <figure class="fn fo fp fq fr fs">
+                <div class="gc r fv">
+                    <div class="iw r">
+                        <iframe allowfullscreen="" class="cp t u fz ak" frameborder="0" height="0" scrolling="auto"
+                            src="https://medium.com/media/75ee615b6e9d6ed396433a075f0b74a8" title="axios-cheerio.js"
+                            width="0">
+                        </iframe>
+                    </div>
+                </div>
+            </figure>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="1b8b">
+                When executed this node script we
+                get the web apps placeholder element
+                <code class="gd is it iu iv b">
+     &lt;div id="app"&gt;
+    </code>
+                without
+                the dynamically rendered content.
+            </p>
+            <figure class="fn fo fp fq fr fs cl cm paragraph-image">
+                <div class="ft fu fv fw ak">
+                    <div class="cl cm ix">
+                        <div class="gc r fv gd">
+                            <div class="iy r">
+                                <div class="fx fy cp t u fz ak eh ga gb">
+                                </div>
+                                <noscript>
+                                    <img class="cp t u fz ak" height="277" role="presentation"
+                                        src="https://miro.medium.com/max/2048/1*DcGa07rn0f0HPFs0tP_nHg.png"
+                                        width="1024" />
+                                </noscript>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </figure>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="06cb">
+                Because of what we received over
+                the wire was a plain text and the JavaScripts included in the HTML were not executed and this is where a
+                headless browser comes to rescue.
+            </p>
+            <h1 class="gs gt dc bk bj gu de gv dg gw gx gy gz ha hb hc hd" id="3801">
+                Switch to puppeteer and headless
+                Chrome
+            </h1>
+            <p class="he hf dc bk hg b hh hi hj hk hl hm hn ho hp hq hr cu" id="ebfa">
+                Let me shortly explain what a
+                <a class="at cg go gp gq gr" href="https://developers.google.com/web/updates/2017/04/headless-chrome"
+                    rel="noopener nofollow" target="_blank">
+                    headless
+                </a>
+                browser is. In a nutshell headless means it’s a
+                browser without graphical user interface (GUI) which can be controlled programmatically. Mostly it’s
+                useful for E2E testing as it will apply all styles, and run JavaScript to generate the DOM. And because
+                of that, it’s a perfect tool to scrape Single Page Applications.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="9667">
+                And as I mentioned that it’s
+                controlled programmatically. And for that reason, we can use puppeteer to control the browser over the
+                <a class="at cg go gp gq gr" href="https://chromedevtools.github.io/devtools-protocol/"
+                    rel="noopener nofollow" target="_blank">
+                    DevTools
+                </a>
+                protocol. Let’s get hands-on and see how to get the dynamically
+                rendered HTML.
+            </p>
+            <figure class="fn fo fp fq fr fs">
+                <div class="gc r fv">
+                    <div class="iw r">
+                        <iframe allowfullscreen="" class="cp t u fz ak" frameborder="0" height="0" scrolling="auto"
+                            src="https://medium.com/media/ee850ac5668b06ea1200310ac2e4b991" title="puppeteer.js"
+                            width="0">
+                        </iframe>
+                    </div>
+                </div>
+            </figure>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="e898">
+                In the example above we are using
+                single dependancy pf puppeteer package. First, we initialize a browser instance (L5) and create a new
+                browser page (L6). Afterward, we instruct the browser page to visit an URL (L7) and wait for an element
+                to appear on the page (L8) before to continue. Notice that one can set the timeout in milliseconds how
+                long the browser should wait for the element.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="c071">
+                After we have awaited the element
+                we are using page’s evaluate method to execute a JavaScript within the web page’s context (L10 — L12).
+                This allows us to access the HTML document using vanilla DOM API. From this, we return the HTML of body
+                element and output. And finally, we close the browser which kills the headless Chrome’s process.
+            </p>
+            <figure class="fn fo fp fq fr fs cl cm paragraph-image">
+                <div class="ft fu fv fw ak">
+                    <div class="cl cm ix">
+                        <div class="gc r fv gd">
+                            <div class="iy r">
+                                <div class="fx fy cp t u fz ak eh ga gb">
+                                </div>
+                                <noscript>
+                                    <img class="cp t u fz ak" height="277" role="presentation"
+                                        src="https://miro.medium.com/max/2048/1*sIEBwWRmcf3544YxRTiu3w.png"
+                                        width="1024" />
+                                </noscript>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <figcaption class="bo eg gj gk gl cn cl cm gm gn bj ef">
+                    A part of the output
+                </figcaption>
+            </figure>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="1c09">
+                And now the result of running this
+                script includes the content of dynamically rendered HTML.
+            </p>
+            <h1 class="gs gt dc bk bj gu de gv dg gw gx gy gz ha hb hc hd" id="21ab">
+                Conclusion
+            </h1>
+            <p class="he hf dc bk hg b hh hi hj hk hl hm hn ho hp hq hr cu" id="7699">
+                This short post demonstrated two
+                solutions how to scrape a website. One can use a combination of axios and cheerio to get the content of
+                a statically rendered website. And use puppeteer to get a dynamical content which is rendered by a
+                fully-powered and invisible (headless) browser.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="363e">
+                I hope this article will help you
+                to start to utilize the mentioned tools as they can be used not only to scrape the websites but also for
+                testing your web apps (E2E or snapshot tests) or taking screenshots.
+            </p>
+        </div>
+    </div>
+</section>
+<section class="cu cv cw cx cy">
+    <div class="n p">
+        <div class="ac ae af ag ah cz aj ak">
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="475a">
+                If you found this post useful and
+                would like to read more about random web development topics, just clap for this article or drop a
+                comment here. And as always you can find me on
+                <a class="at cg go gp gq gr" href="https://twitter.com/andrejsabrickis" rel="noopener nofollow"
+                    target="_blank">
+                    Twitter@andrejsabrickis
+                </a>
+            </p>
+        </div>
+    </div>
+</section>
+<section class="cu cv cw cx cy">
+    <div class="n p">
+        <div class="ac ae af ag ah cz aj ak">
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="3f88">
+                This article, the content, and
+                opinions expressed on Medium are my own. But as I work for one of the
+                <a class="at cg go gp gq gr" href="https://www.mintos.com/en/" rel="noopener nofollow" target="_blank">
+                    leading P2P loans marketplaces Mintos.com
+                </a>
+                I would like to use this last line to promote that we
+                are hiring. Including the Growth Engineering team, I am leading at the moment.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="46d0">
+                You can see all list of the
+                <a class="at cg go gp gq gr" href="https://mintos.workable.com" rel="noopener nofollow" target="_blank">
+                    open positions on our Workable board
+                </a>
+                . And feel free to contact me
+                directly if you find something interesting in the list or would like to recommend a person you know.
+            </p>
+            <p class="he hf dc bk hg b hh ib hj ic hl id hn ie hp if hr cu" id="52ec">
+                Cheers!
+            </p>
+        </div>
+    </div>
+</section>

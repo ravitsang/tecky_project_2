@@ -49,21 +49,32 @@ class MediumSpider(scrapy.Spider):
 
 
 
-
+# *[not(self::d)]
 
         # loop through all the sections
         
+        # img[not(parent::div)]
+# *[img[not(parent::div)]]
+
+
+        # def remove_title_and_author():
+            # index = 0
+            # for x in response.xpath('/html/body/div/div/article/div/section[1]/div/div/child::*/*[img[not(parent::div)]]').getall():
+            #     print(index)
+            #     if index != 0:
+            #         print(x)
+            #         f = open("test2.html", "a+")
+            #         f.write(x)
+            #         f.close()
+            #     index += 1
 
         def remove_title_and_author():
-            index = 0
-            for x in response.xpath('/html/body/div/div/article/div/section[1]/div/div/child::*').getall():
-                print(index)
-                if index != 0:
-                    print(x)
-                    f = open("test2.html", "a+")
-                    f.write(x)
-                    f.close()
-                index += 1
+
+            x = response.xpath('/html/body/div/div/article/div/section[1]/div/div/*[not(self::div)]').get()
+            f = open("test2.html", "a+")
+            f.write(x)
+            f.close()
+         
 
         def omit_first_section():
             index = 0

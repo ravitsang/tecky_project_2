@@ -3,7 +3,7 @@
 }
 
 .navbar {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 1);
     padding: 10px;
 }
 
@@ -39,6 +39,77 @@
     align-items: center;
 }
 
+#navbar-item-search-btn.show {
+    animation: search-text-btn-show 0.5s;
+}
+
+.navbar-item-search-text {
+    margin: 0 0 0 15px;
+    display: none;
+}
+
+.navbar-item-search-text.show {
+    display: block;
+    margin: 0 150px 0 15px;
+}
+
+@keyframes search-text-btn-show {
+    0% {
+        transform: translate(0);
+    }
+    100% {
+        transform: translate(-170px);
+    }
+}
+
+.navbar-item-search-text input, .navbar-item-search-text input:focus {
+    border: 0;
+    outline: none;
+}
+
+.navbar-item-search-table {
+    background-color: #fff;
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    position: absolute;
+    width: 250px;
+    left: 55%;
+    top: 120%;
+    display: none;
+    padding: 10px;
+}
+
+.navbar-item-search-table.show {
+    display: block;
+}
+
+.navbar-item-search-table-title {
+    color: #757575;
+    padding: 5px;
+}
+
+.navbar-item-search-table-title span {
+    color: #757575;
+    padding: 5px;
+}
+
+.navbar-item-search-table-Title {
+    padding: 5px;
+    border-bottom: 0.5px rgba(0, 0, 0, 0.5) solid;
+}
+
+.navbar-item-search-table-users {
+    list-style-type: none;
+    padding: 10px;
+    width: 100%;
+}
+.navbar-item-search-table-item{
+    margin:15px 0 15px 0;
+}
+#publications img{
+    border-radius: 0;
+}
+
 .navbar-item.btn {
     width: 95px;
     padding: 5px;
@@ -56,13 +127,17 @@
     border-radius: 50%;
 }
 
-.tag-menu, .tag-items {
+.tag-menu {
+    background-color: rgba(255, 255, 255, 1);
+    padding: 5px 0 5px 0;
+}
+
+.tag-items {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0;
-    padding: 0;
 }
 
 .tag-item, .tag-item a {
@@ -70,9 +145,9 @@
     list-style-type: none;
     text-decoration-line: none;
     font-size: 14px;
-    color: rgba(0,0,0,0.6);
+    color: rgba(0, 0, 0, 0.6);
 }
 
-.tag-item a:hover, .tag-item.is-active a{
-    color:rgba(0,0,0,1);
+.tag-item a:hover, .tag-item.is-active a {
+    color: rgba(0, 0, 0, 1);
 }

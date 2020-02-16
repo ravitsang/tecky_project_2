@@ -1,3 +1,7 @@
+![](https://miro.medium.com/max/60/0*Nm6YR258nleQ3_PN?q=20)
+
+<img class="cp t u fz ak" src="https://miro.medium.com/max/12000/0\*Nm6YR258nleQ3\_PN" width="6000" height="4000" role="presentation">
+
 Photo by [Pankaj Patel](https://unsplash.com/@pankajpatel?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
 Axios and cheerio is a great toolset to fetch and scrape the content of a static web page. But nowadays when many of the websites are built as a single page application and gets rendered dynamically on the client it might not be possible to get the content.
@@ -8,7 +12,7 @@ Let’s have a quick look on the source HTML of a SPA application and the render
 
 ![](https://miro.medium.com/max/60/1*rf9VXhBcni3ub-I_UHO9Ug.png?q=20)
 
-<img class="cp t u fz ak" height="1538" role="presentation" src="https://miro.medium.com/max/5584/1\*rf9VXhBcni3ub-I\_UHO9Ug.png" width="2792"/>
+<img class="cp t u fz ak" src="https://miro.medium.com/max/5584/1\*rf9VXhBcni3ub-I\_UHO9Ug.png" width="2792" height="1538" role="presentation">
 
 Screenshot of the beach volleyball standing on [https://bvopen.abrickis.me/#/standings](https://bvopen.abrickis.me/#/standings)
 
@@ -27,6 +31,10 @@ As an example let’s try to get the content of the body tag using axios and che
 
 When executed this node script we get the web apps placeholder element `<div id="app">` without the dynamically rendered content.
 
+![](https://miro.medium.com/max/60/1*DcGa07rn0f0HPFs0tP_nHg.png?q=20)
+
+<img class="cp t u fz ak" src="https://miro.medium.com/max/2048/1\*DcGa07rn0f0HPFs0tP\_nHg.png" width="1024" height="277" role="presentation">
+
 Because of what we received over the wire was a plain text and the JavaScripts included in the HTML were not executed and this is where a headless browser comes to rescue.
 
 Switch to puppeteer and headless Chrome
@@ -42,7 +50,7 @@ After we have awaited the element we are using page’s evaluate method to execu
 
 ![](https://miro.medium.com/max/60/1*sIEBwWRmcf3544YxRTiu3w.png?q=20)
 
-<img class="cp t u fz ak" height="277" role="presentation" src="https://miro.medium.com/max/2048/1\*sIEBwWRmcf3544YxRTiu3w.png" width="1024"/>
+<img class="cp t u fz ak" src="https://miro.medium.com/max/2048/1\*sIEBwWRmcf3544YxRTiu3w.png" width="1024" height="277" role="presentation">
 
 A part of the output
 
@@ -59,6 +67,6 @@ If you found this post useful and would like to read more about random web devel
 
 This article, the content, and opinions expressed on Medium are my own. But as I work for one of the [leading P2P loans marketplaces Mintos.com](https://www.mintos.com/en/) I would like to use this last line to promote that we are hiring. Including the Growth Engineering team, I am leading at the moment.
 
-You can see all list of the [open positions on our Workable board](https://mintos.workable.com) . And feel free to contact me directly if you find something interesting in the list or would like to recommend a person you know.
+You can see all list of the [open positions on our Workable board](https://mintos.workable.com). And feel free to contact me directly if you find something interesting in the list or would like to recommend a person you know.
 
 Cheers!

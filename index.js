@@ -16,7 +16,7 @@ const TurndownService = require('turndown')
 
 async function parseHtmlToString (){
 
-    let html = await fs.promises.readFile('scrape_medium/test3.html');
+    let html = await fs.promises.readFile('scrape_medium/test2.html');
         
     let turndownService = new TurndownService();
     
@@ -48,7 +48,7 @@ async function parseHtmlToString (){
     console.log(markdown);
         
 
-    await fs.promises.writeFile('test3.md', markdown)
+    await fs.promises.writeFile('test2.md', markdown)
 }
 
 

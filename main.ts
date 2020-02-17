@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as bodyParser from 'body-parser';
 import { UserRouter } from './routers/userRouter';
+import { SearchRouter } from './routers/SearchRouter';
 // import * as Knex from 'knex';
 
 // const knexConfig = require('./knexfile');
@@ -23,6 +24,7 @@ app.use(express.static('public'));
 
 app.post('/api/v1/login', new UserRouter().login);
 app.post('/api/v1/register', new UserRouter().register);
+app.get('/api/v1/search', new SearchRouter().search);
 
 app.use((req, res, next) => {
     if (req.session?.isLogin) {

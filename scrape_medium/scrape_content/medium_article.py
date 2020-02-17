@@ -1,12 +1,12 @@
 # scraping the content in medium using scrapy and create a jsonfile
 import scrapy
 import csv
-
+from bs4 import BeautifulSoup
 
 
 class MediumSpider(scrapy.Spider):
     name = "medium_article"
-    link_number = 1
+    # link_number = 1
     # it returns scrapy.request
     def start_requests(self):
 
@@ -21,6 +21,8 @@ class MediumSpider(scrapy.Spider):
                 links.append(row[0])
                 line_count += 1
             print(f'Processed {line_count} lines.')
+            
+        # link = "https://uxdesign.cc/the-new-landing-page-is-to-have-no-landing-page-at-all-bb57ca1548f1"
 
             for link in links:
                 yield scrapy.Request(link, callback=self.parse_article)
@@ -36,37 +38,46 @@ class MediumSpider(scrapy.Spider):
             '/html/body/div/div/div[5]/div/div[1]/div/div[3]/ul/li/a/text()').getall()
 
 
-    
-        def section1_without_title_and_author():
-            index = 0
-            for x in response.xpath('/html/body/div/div/article/div/section[1]/div/div/child::*').getall():
-                print(index)
-                if index != 0:
-                    print(x)
-                    f = open(f"content_{str(MediumSpider.link_number)}.html", "a+")
-                    f.write(x)
-                    f.close()
-                index += 1
-
-        def remaining_sections():
-            index = 0
-            for content in response.xpath('/html/body/div/div/article/div/section').getall():
-                if index != 0:
-                    print(content)
-                    f = open(f"content_{str(MediumSpider.link_number)}.html", "a+")
-                    f.write(content)
-                    f.close()
-                index += 1
+        full_article = response.xpath(
+            '/html/body/div/div/article').get()
 
 
-        # section1_without_title_and_author()
-        # remaining_sections()
 
-        MediumSpider.link_number += 1
+        soup = BeautifulSoup(full_article, 'html.parser')
+   
+        for x in soup.find_all("section")[1].div.div.find_all("div", recursive=False):
+            x.decompose()
 
-        yield {"title": title, "author": author, "tag": tag}
+        content = soup.prettify()
+        
+        # def section1_without_title_and_author():
+        #     index = 0
+        #     for x in response.xpath('/html/body/div/div/article/div/section[1]/div/div/child::*').getall():
+        #         print(index)
+        #         if index != 0:
+        #             print(x)
+        #             f = open(f"content_{str(MediumSpider.link_number)}.html", "a+")
+        #             f.write(x)
+        #             f.close()
+        #         index += 1
+
+
+        # def remaining_sections():
+        #     index = 0
+        #     for content in response.xpath('/html/body/div/div/article/div/section').getall():
+        #         if index != 0:
+        #             print(content)
+        #             f = open(f"content_{str(MediumSpider.link_number)}.html", "a+")
+        #             f.write(content)
+        #             f.close()
+        #         index += 1
+
+
+
+
+        yield {"title": title, "author": author, "tag": tag, "content":content}
 
 
 # scrapy fetch --nolog https://medium.com/search?q=programming > response.html
 
-# scrapy runspider medium_article.py -o ./data/medium_article.csv
+# scrapy runspider medium_article.py -o ../data/medium_article.csv

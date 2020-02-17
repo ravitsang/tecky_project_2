@@ -12,7 +12,7 @@ export interface User{
 }
 
 export interface Article {
-    id:number,
+    id?:number,
     user_id:number,
     title:string,
     content:string,

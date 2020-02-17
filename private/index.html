@@ -23,7 +23,41 @@
             </div>
             <div class="navbar-menu">
                 <ul class="navbar-items">
-                    <li class="navbar-item"><a href="#"><i class="fas fa-search"></i></a></li>
+                    <li class="navbar-item"><a href="#" id="navbar-item-search-btn" title="Search Medium"><i
+                                class="fas fa-search"></i></a>
+                        <div class="navbar-item-search-text"><input type="text" placeholder="Search Medium"
+                                id="navbar-item-search-text"></div>
+                        <div class="navbar-item-search-table fixed-top" id="navbar-item-search-table">
+                            <div class="navbar-item-search-table-title"><i class="fas fa-search fa-sm"></i><span
+                                    id="navbar-item-search-table-userinput"></span></div>
+
+                            <div class="navbar-item-search-table-item" id="people">
+                                <div class="navbar-item-search-table-Title">
+                                    PEOPLE
+                                </div>
+                                <ul class="navbar-item-search-table-users">
+                                    <a href="#">
+                                        <li class="navbar-item-search-table-user"><img
+                                                src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> Text Name</li>
+                                    </a>
+                                </ul>
+                            </div>
+
+                            <div class="navbar-item-search-table-item" id="publications">
+                                <div class="navbar-item-search-table-Title">
+                                    PUBLICATIONS
+                                </div>
+
+                                <ul class="navbar-item-search-table-users">
+                                    <a href="#">
+                                        <li class="navbar-item-search-table-user"><img
+                                                src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> text public 234</li>
+                                    </a>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+
                     <li class="navbar-item"><a href="#"><i class="far fa-bookmark"></i></a></li>
                     <li class="navbar-item"><a href="#"><i class="far fa-bell"></i></a></li>
                     <li class="navbar-item btn"><a href="#">Upgrade</a></li>
@@ -31,10 +65,12 @@
 
                 </ul>
             </div>
+
         </nav>
+
         <!-- tag Menu -->
-        <div class="tag-menu">
-            <ul class="tag-items">
+        <div class="tag-menu sticky-top ">
+            <ul class="tag-items" id="tag-items">
                 <li class="tag-item is-active"><a href="#">HOME</a></li>
                 <li class="tag-item"><a href="#">ONEZERO</a></li>
                 <li class="tag-item"><a href="#">ELEMENTAL</a></li>
@@ -51,213 +87,287 @@
         </div>
 
         <!-- Top Section -->
-        <div class="top-section">
-            <div class="container">
-                <div class="row">
-                    <!-- Top left -->
-                    <div class="col-5 top-left">
+        <div class="top-section ">
+            <div class="row">
+                <!-- Top left -->
+                <div class="col-5 top-left">
+                    <a href="#">
+                        <div class="top-left-image">
+                            <img src="./images/0_cF-7zKh4jqldcDf2.jfif">
+                        </div>
+                    </a>
+                    <div class="top-left-content">
                         <a href="#">
-                            <div class="top-left-image">
-                                <img src="./images/0_cF-7zKh4jqldcDf2.jfif">
+                            <div class="top-left-title">
+                                <h1>10 Signs You Will Suck at Programming</h1>
                             </div>
+                            <div class="top-left-desc">How do you know? If you are new to programming, or struggling
+                                to
+                                learn — this list will give you some pointers and advice.</div>
                         </a>
-                        <div class="top-left-content">
-                            <a href="#">
-                                <div class="top-left-title">
-                                    <h1>10 Signs You Will Suck at Programming</h1>
-                                </div>
-                                <div class="top-left-desc">How do you know? If you are new to programming, or struggling
-                                    to
-                                    learn — this list will give you some pointers and advice.</div>
-                            </a>
-                            <div class="top-left-user-blog">Jonathan Bluks in Noteworthy - The Journal Blog</div>
-                            <div class="top-left-date">Jan 28, 2019</div>
+                        <div class="top-left-user-blog">Jonathan Bluks in Noteworthy - The Journal Blog</div>
+                        <div class="top-left-date">Jan 28, 2019</div>
+                    </div>
+                </div>
+                <!-- Top center -->
+                <div class="col-4 top-center">
+                    <div class="row top-center-item">
+                        <div class="col-4 top-center-image">
+                            <img src="./images/1_iPem80PqRGBFvYsJ0CIzGg.jpeg">
+                        </div>
+                        <div class="col-8 top-center-content">
+                            <div class="top-center-title">The 7 Habits of Highly Ineffective People
+                            </div>
+                            <div class="top-center-user-blog">Ayodeji Awosika in Mind Cafe</div>
+                            <div class="top-center-date">Jan 31</div>
                         </div>
                     </div>
-                    <!-- Top center -->
-                    <div class="col-4 top-center">
-                        <div class="row top-center-item">
-                            <div class="col-4 top-center-image">
-                                <img src="./images/1_iPem80PqRGBFvYsJ0CIzGg.jpeg">
-                            </div>
-                            <div class="col-8 top-center-content">
-                                <div class="top-center-title">The 7 Habits of Highly Ineffective People
-                                </div>
-                                <div class="top-center-user-blog">Ayodeji Awosika in Mind Cafe</div>
-                                <div class="top-center-date">Jan 31</div>
-                            </div>
+                    <div class=" row top-center-item">
+                        <div class="col-4 top-center-image">
+                            <img src="./images/0_DAtI8IDDxT8vPqMZ.jfif">
                         </div>
-                        <div class=" row top-center-item">
-                            <div class="col-4 top-center-image">
-                                <img src="./images/0_DAtI8IDDxT8vPqMZ.jfif">
-                            </div>
-                            <div class="col-8 top-center-content">
-                                <div class="top-center-title">Here Are 5 High Growth Startups To Watch For In 2020
+                        <div class="col-8 top-center-content">
+                            <div class="top-center-title">Here Are 5 High Growth Startups To Watch For In 2020
 
-                                </div>
-                                <div class="top-center-user-blog">Richard Liu in The Startup</div>
-                                <div class="top-center-date">Jan 10</div>
                             </div>
-                        </div>
-                        <div class="row top-center-item">
-                            <div class="col-4 top-center-image">
-                                <img src="./images/1_BGD9g1PoepfxaPn1Uxyzfg.jpeg">
-                            </div>
-                            <div class="col-8 top-center-content">
-                                <div class="top-center-title">This Is How Google Will Collapse
-                                </div>
-                                <div class="top-center-user-blog">Daniel Colin James in Forward Tick</div>
-                                <div class="top-center-date">Apr 25, 2017</div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- Top right -->
-                    <div class="col-3 top-right">
-                        <div class="top-right-image"><img src="./images/0_5s371FuGmnS1KZ3j.jpg"></div>
-                        <div class="top-right-content">
-                            <div class="top-right-title">14 Non-Sexual Ways to Turn Your Lover On</div>
-                            <div class="top-right-user-blog">The Good Men Project</div>
-                            <div class="top-right-date">Feb 1</div>
-                        </div>
-
-                    </div>
-
-                    <!-- Top bottom -->
-                    <div class="col-12 top-bottom">
-                        <div class="top-bottom-btn"><a href="#">SEE EDITOR’S PICKS <i class="fas fa-chevron-right"></i>
-                            </a></div>
-                    </div>
-
-                    <!-- Center left -->
-                    <div class="col-7 center-left">
-                        <div class="row">
-                            <div class="col-9 center-left-item">
-                                <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                                <div class="center-left-title">The most important skill a programmer can learn</div>
-                                <div class="center-left-desc">The best code is no code at all.</div>
-                                <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                                <div class="center-left-item-btn d-flex justify-content-between">
-                                    <div class="center-left-date">May 15, 2019</div>
-                                    <div class="d-flex">
-                                        <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                        <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 cemter-left-image">
-                                <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                            </div>
-
-                            <div class="col-9 center-left-item">
-                                <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                                <div class="center-left-title">The most important skill a programmer can learn</div>
-                                <div class="center-left-desc">The best code is no code at all.</div>
-                                <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                                <div class="center-left-item-btn d-flex justify-content-between">
-                                    <div class="center-left-date">May 15, 2019</div>
-                                    <div class="d-flex">
-                                        <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                        <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 cemter-left-image">
-                                <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                            </div>
-
-                            <div class="col-9 center-left-item">
-                                <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                                <div class="center-left-title">The most important skill a programmer can learn</div>
-                                <div class="center-left-desc">The best code is no code at all.</div>
-                                <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                                <div class="center-left-item-btn d-flex justify-content-between">
-                                    <div class="center-left-date">May 15, 2019</div>
-                                    <div class="d-flex">
-                                        <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                        <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 cemter-left-image">
-                                <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                            </div>
-
-                            <div class="col-9 center-left-item">
-                                <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                                <div class="center-left-title">The most important skill a programmer can learn</div>
-                                <div class="center-left-desc">The best code is no code at all.</div>
-                                <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                                <div class="center-left-item-btn d-flex justify-content-between">
-                                    <div class="center-left-date">May 15, 2019</div>
-                                    <div class="d-flex">
-                                        <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                        <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-3 cemter-left-image">
-                                <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                            </div>
+                            <div class="top-center-user-blog">Richard Liu in The Startup</div>
+                            <div class="top-center-date">Jan 10</div>
                         </div>
                     </div>
-                    <!-- Center right -->
-                    <div class="col-3 center-right">
-                        <div class="center-right-name">Popular on Medium</div>
-                        <div class="center-right-items">
-                            <div class="row center-right-item d-flex">
-                                <div class="col-3 center-right-num d-flex justify-content-center">01</div>
-                                <div class="col-9 center-right-content">
-                                    <div class="center-right-title">
-                                        After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
-                                    </div>
-                                    <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
-                                    <div class="center-right-date">Feb 12</div>
+                    <div class="row top-center-item">
+                        <div class="col-4 top-center-image">
+                            <img src="./images/1_BGD9g1PoepfxaPn1Uxyzfg.jpeg">
+                        </div>
+                        <div class="col-8 top-center-content">
+                            <div class="top-center-title">This Is How Google Will Collapse
+                            </div>
+                            <div class="top-center-user-blog">Daniel Colin James in Forward Tick</div>
+                            <div class="top-center-date">Apr 25, 2017</div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Top right -->
+                <div class="col-3 top-right ">
+                    <div class="top-right-image"><img src="./images/0_5s371FuGmnS1KZ3j.jpg"></div>
+                    <div class="top-right-content">
+                        <div class="top-right-title">14 Non-Sexual Ways to Turn Your Lover On</div>
+                        <div class="top-right-user-blog">The Good Men Project</div>
+                        <div class="top-right-date">Feb 1</div>
+                    </div>
+
+                </div>
+
+                <!-- Top bottom -->
+                <div class="col-12 top-bottom ">
+                    <div class="top-bottom-btn"><a href="#">SEE EDITOR’S PICKS <i class="fas fa-chevron-right"></i>
+                        </a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Section -->
+        <div class="center-section ">
+            <!-- Center left -->
+            <div class="row">
+                <div class="col-7 center-left">
+                    <div class="row">
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="center-right-items">
-                            <div class="row center-right-item d-flex">
-                                <div class="col-3 center-right-num d-flex justify-content-center">02</div>
-                                <div class="col-9 center-right-content">
-                                    <div class="center-right-title">
-                                        After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
-                                    </div>
-                                    <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
-                                    <div class="center-right-date">Feb 12</div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="center-right-items">
-                            <div class="row center-right-item d-flex">
-                                <div class="col-3 center-right-num d-flex justify-content-center">03</div>
-                                <div class="col-9 center-right-content">
-                                    <div class="center-right-title">
-                                        After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
-                                    </div>
-                                    <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
-                                    <div class="center-right-date">Feb 12</div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="center-right-items">
-                            <div class="row center-right-item d-flex">
-                                <div class="col-3 center-right-num d-flex justify-content-center">04</div>
-                                <div class="col-9 center-right-content">
-                                    <div class="center-right-title">
-                                        After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
-                                    </div>
-                                    <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
-                                    <div class="center-right-date">Feb 12</div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+
+                        <div class="col-9 center-left-item ">
+                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
+                            <div class="center-left-title">The most important skill a programmer can learn</div>
+                            <div class="center-left-desc">The best code is no code at all.</div>
+                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
+                            <div class="center-left-item-btn d-flex justify-content-between">
+                                <div class="center-left-date">May 15, 2019</div>
+                                <div class="d-flex">
+                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
+                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 cemter-left-image">
+                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
+                        </div>
+                    </div>
+                </div>
+                <!-- Center right -->
+                <div class="center-right col-3">
+                    <div class="center-right-name ">Popular on Medium</div>
+                    <div class="center-right-items">
+                        <div class="row center-right-item d-flex">
+                            <div class="col-3 center-right-num d-flex justify-content-center">01</div>
+                            <div class="col-9 center-right-content">
+                                <div class="center-right-title">
+                                    After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
+                                </div>
+                                <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
+                                <div class="center-right-date">Feb 12</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-right-items">
+                        <div class="row center-right-item d-flex">
+                            <div class="col-3 center-right-num d-flex justify-content-center">02</div>
+                            <div class="col-9 center-right-content">
+                                <div class="center-right-title">
+                                    After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
+                                </div>
+                                <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
+                                <div class="center-right-date">Feb 12</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-right-items">
+                        <div class="row center-right-item d-flex">
+                            <div class="col-3 center-right-num d-flex justify-content-center">03</div>
+                            <div class="col-9 center-right-content">
+                                <div class="center-right-title">
+                                    After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
+                                </div>
+                                <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
+                                <div class="center-right-date">Feb 12</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="center-right-items">
+                        <div class="row center-right-item d-flex">
+                            <div class="col-3 center-right-num d-flex justify-content-center">04</div>
+                            <div class="col-9 center-right-content">
+                                <div class="center-right-title">
+                                    After Attending a Trump Rally, I Realized Democrats Are Not Ready For 2020
+                                </div>
+                                <div class="center-right-user-blog">Karlyn Borysenko in GEN</div>
+                                <div class="center-right-date">Feb 12</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+
         </div>
     </div>
+
+
 
 
 

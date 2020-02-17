@@ -16,7 +16,7 @@ export async function seed(knex: Knex): Promise<any> {
 
     const [raviId, lexieId, matthewId] = await knex('user').insert([
         { name: 'Ravi', password: '1234', email: "ravitsang@gmail.com", link: 'https://www.facebook.com/ravi.tsang' },
-        { name: 'Lexie', password: '1234', email: "12040404@gmail.com", link: 'https://www.facebook.com/ravi.tsang' },
+        { name: 'Lexie', password: '1234', email: "lexingtonc852@gmail.com", link: 'https://www.facebook.com/ravi.tsang' },
         { name: 'Matthew', password: '1234', email: "matthewchoi123@gmail.com", link: 'https://www.facebook.com/ravi.tsang' }
     ]).returning('id');
 

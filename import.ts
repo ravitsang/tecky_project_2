@@ -1,4 +1,4 @@
-import { Tag, Article } from './model/importCsvModel';
+import { Tag, ImportArticle } from './model/importCsvModel';
 import * as Knex from 'knex';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -11,7 +11,7 @@ const knex = Knex(knexConfig['development']);
 
 
 //  xlsx vs excel ?
-// .returning('id') is knex builder syntax )
+// .returning('id') is knex builder syntax
 //  id = result.rows[0].id
 // create tagMap = {} for getting the id 
 // delete data with descending order
@@ -20,12 +20,12 @@ const knex = Knex(knexConfig['development']);
 
 async function importData() {
 
-    const tagCsv = await fs.promises.readFile(path.join(__dirname, "scrape_medium/data/medium_tag.csv"));
-    let tags: Tag[] = await neatCsv(tagCsv);
+    // const tagCsv = await fs.promises.readFile(path.join(__dirname, "scrape_medium/data/medium_tag.csv"));
+    // let tags: Tag[] = await neatCsv(tagCsv);
 
 
     const articleCsv = await fs.promises.readFile(path.join(__dirname, './scrape_medium/data/medium_article.csv'));
-    let articleDetails: Article[] = await neatCsv(articleCsv);
+    let articleDetails: ImportArticle[] = await neatCsv(articleCsv);
 
     // console.log(articleDetails);
 
@@ -39,7 +39,7 @@ async function importData() {
             // insert users
 
             // delete all data first
-            
+
             await trx.raw(/*sql */ `DELETE FROM "article_comment"`)
             await trx.raw(/*sql */ `DELETE FROM "article_tag"`)
             await trx.raw(/*sql */ `DELETE FROM "history"`)

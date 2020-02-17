@@ -1,4 +1,4 @@
-export interface Article {
+export interface ImportArticle {
     title:string,
     author:string,
     tag:string,

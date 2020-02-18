@@ -100,13 +100,25 @@
 
 .navbar-item-search-table-users {
     list-style-type: none;
-    padding: 10px;
+    padding: 0px;
     width: 100%;
 }
-.navbar-item-search-table-item{
-    margin:15px 0 15px 0;
+
+.navbar-item-search-table-user {
+    padding: 5px;
 }
-#publications img{
+
+.navbar-item-search-table-user i {
+    border-radius: 0;
+    margin: 9px;
+    color: #757575;
+}
+
+.navbar-item-search-table-item {
+    margin: 15px 0 15px 0;
+}
+
+.navbar-item-search-table-user.publication img {
     border-radius: 0;
 }
 

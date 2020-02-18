@@ -19,9 +19,65 @@ $(document).ready(function () {
 
 
     document.querySelector('#navbar-item-search-text')
-        .addEventListener('keyup', (event) => {
+        .addEventListener('keyup', async (event) => {
             const search_text = document.querySelector('#navbar-item-search-text');
             if (search_text.value !== '') {
+                const res = await fetch(`/api/v1/search?q=${search_text.value}`)
+                const result = await res.json();
+                const search_table = document.querySelector('#navbar-item-search-table-display');
+                search_table.innerHTML = ``;
+                const tags = result[0];
+                const users = result[1];
+                const articles = result[2];
+                if (users.user !== null) {
+                    search_table.innerHTML += `<div class="navbar-item-search-table-item" id="peoples">
+                    <div class="navbar-item-search-table-Title">
+                        PEOPLE
+                    </div>
+                    <ul class="navbar-item-search-table-users">
+                        `;
+                    for (let i = 0; i < users.user.length; i++) {
+                        search_table.innerHTML += `<a href="#">
+                            <li class="navbar-item-search-table-user"><img
+                                    src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> ${users.user[i].name}</li>
+                        </a>`;
+                    }
+                    search_table.innerHTML += `</ul>
+                        </div>`;
+                }
+                
+                if (articles.article !== null) {
+                 search_table.innerHTML += `<div class="navbar-item-search-table-item" id="publications">
+                    <div class="navbar-item-search-table-Title">
+                        PUBLICATIONS
+                    </div>
+                    <ul class="navbar-item-search-table-users">
+                        `;
+                    for (let i = 0; i < articles.article.length; i++) {
+                        search_table.innerHTML += `<a href="#">
+                            <li class="navbar-item-search-table-user publication"><img
+                                    src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> ${articles.article[i].title}</li>
+                        </a>`;
+                    }
+                    search_table.innerHTML += `</ul>
+                        </div>`;
+                }
+                if (tags.tag !== null) {
+                    search_table.innerHTML += `<div class="navbar-item-search-table-item" id="tags">
+                    <div class="navbar-item-search-table-Title">
+                        TAGS
+                    </div>
+                    <ul class="navbar-item-search-table-users">
+                        `;
+                    for (let i = 0; i < tags.tag.length; i++) {
+                        search_table.innerHTML += `<a href="#">
+                            <li class="navbar-item-search-table-user"><i class="fas fa-tag"></i> ${tags.tag[i].name}</li>
+                        </a>`;
+                    }
+                    search_table.innerHTML += `</ul>
+                        </div>`;
+                }
+
                 document.querySelector('#navbar-item-search-table').classList.add('show');
                 document.querySelector('#navbar-item-search-table-userinput').innerHTML = `Search for '${search_text.value}'`;
             } else {

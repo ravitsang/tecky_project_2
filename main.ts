@@ -1,11 +1,12 @@
+
 import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as bodyParser from 'body-parser';
 import { UserRouter } from './routers/userRouter';
-// import * as Knex from 'knex';
-
-// const knexConfig = require('./knexfile');
-// const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
+import { ArticleRouter } from './routers/ArticleRouter';
+import * as Knex from 'knex';
+const knexConfig = require('./knexfile');
+const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
 
 const app = express();
@@ -23,6 +24,8 @@ app.use(express.static('public'));
 
 app.post('/api/v1/login', new UserRouter().login);
 app.post('/api/v1/register', new UserRouter().register);
+app.use('/article', new ArticleRouter(knex).Router())
+
 
 app.use((req, res, next) => {
     if (req.session?.isLogin) {

@@ -4,14 +4,12 @@ import * as expressSession from 'express-session';
 import * as bodyParser from 'body-parser';
 import { UserRouter } from './routers/userRouter';
 import { ArticleRouter } from './routers/ArticleRouter';
+import { SearchRouter } from './routers/SearchRouter';
+
 import * as Knex from 'knex';
 const knexConfig = require('./knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
-import { SearchRouter } from './routers/SearchRouter';
-// import * as Knex from 'knex';
 
-// const knexConfig = require('./knexfile');
-// const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
 
 const app = express();

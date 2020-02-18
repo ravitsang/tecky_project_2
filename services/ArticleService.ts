@@ -1,16 +1,14 @@
 import * as Knex from "knex";
 import { Article } from "./models";
-// const knexConfig = require('../knexfile');
-// const knex = Knex(knexConfig[process.env.NODE_END || 'development'])
 
-// class instance write as function declaration? not expression?
-// when use transaction?
+
 
 export class ArticleService {
 
     constructor(private knex: Knex) {
 
     }
+
 
     // create article
     async create(article: Article, userId: number) {
@@ -33,7 +31,7 @@ export class ArticleService {
             }
             
             return (articleResult.rows[0].id);
-            
+
         })
 
         await this.knex.destroy();

@@ -2,7 +2,7 @@
 import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as bodyParser from 'body-parser';
-import { UserRouter } from './routers/userRouter';
+import { UserRouter } from './routers/UserRouter';
 import { ArticleRouter } from './routers/ArticleRouter';
 import { SearchRouter } from './routers/SearchRouter';
 
@@ -30,7 +30,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import './passport';
-import { loginFlow, isLoggedIn } from './guards';
+import { loginFlow} from './guards';
 
 app.use(express.static('public'));
 
@@ -46,10 +46,10 @@ app.get('/auth/google/', passport.authenticate('google', {
 app.get('/auth/google/callback', (...rest) =>
     passport.authenticate('google', loginFlow(...rest))(...rest));
 
-app.get('/logout', (req, res) => {
-    req.logOut();
-    res.redirect('/login.html')
-})
+// app.get('/logout', (req, res) => {
+//     req.logOut();
+//     res.redirect('/login.html')
+// })
 
 app.post('/api/v1/login', new UserRouter().login);
 app.post('/api/v1/register', new UserRouter().register);
@@ -64,7 +64,7 @@ app.use((req, res, next) => {
     }
 })
 
-app.use(isLoggedIn);
+// app.use(isLoggedIn);
 
 app.use('/m', express.static('private'));
 

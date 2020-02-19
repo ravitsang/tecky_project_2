@@ -1,6 +1,6 @@
 import * as express from 'express';
 import {Request,Response} from 'express';
-import { EditorService } from '../services/editorService';
+import { EditorService } from '../services/EditorService';
 
 export class EditorRouter{
     constructor(private editorService:EditorService){

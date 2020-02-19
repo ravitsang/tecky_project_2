@@ -23,12 +23,34 @@ export class UserService {
                 email: email,
                 password: password
             });
+
+
             return true;
         } else {
             return false;
         }
 
     }
+
+    // passport
+    async createUser(email: string, password: string) {
+    
+        const name = email.split('@')[0];
+        console.log(name);
+        const result = await knex.raw(/*sql*/ `INSERT INTO "user" ("name","email","password") VALUES(:name, :email, :password) RETURNING id`, {
+            name: name,
+            email: email,
+            password: password
+        });
+        console.log(result);
+        return result
+
+    }
+
+
+
+
+
 
     //retrieve
     async retrieve() {
@@ -64,7 +86,16 @@ export class UserService {
 
 
 
-
-
 }
 
+// const userService = new UserService();
+
+// async function test() {
+//     const result  = await userService.retrieve();
+//     console.log(result.rows);
+//     const user = result.rows.find((user) => user.email == "ravitsang@gmail.com");
+//     console.log(user);
+// }
+
+
+// test()

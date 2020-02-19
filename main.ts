@@ -7,6 +7,7 @@ import { ArticleRouter } from './routers/ArticleRouter';
 import { SearchRouter } from './routers/SearchRouter';
 
 import * as Knex from 'knex';
+import * as passport from 'passport';
 const knexConfig = require('./knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
@@ -23,7 +24,32 @@ app.use(expressSession({
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+
+// put after sessions
+app.use(passport.initialize());
+app.use(passport.session());
+
+import './passport';
+import { loginFlow, isLoggedIn } from './guards';
+
 app.use(express.static('public'));
+
+app.post('/login', (...rest) => //rest = req, res, next)
+    passport.authenticate('local', loginFlow(...rest))(...rest));
+
+
+app.get('/auth/google/', passport.authenticate('google', {
+    scope: ['email', 'profile']
+})); // API scopes that want to access from user / there are many scopes can use
+
+// the path that come back from google after authorization from google
+app.get('/auth/google/callback', (...rest) =>
+    passport.authenticate('google', loginFlow(...rest))(...rest));
+
+app.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/login.html')
+})
 
 app.post('/api/v1/login', new UserRouter().login);
 app.post('/api/v1/register', new UserRouter().register);
@@ -37,6 +63,8 @@ app.use((req, res, next) => {
         res.status(401).redirect('/');
     }
 })
+
+app.use(isLoggedIn);
 
 app.use('/m', express.static('private'));
 

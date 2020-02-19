@@ -2,6 +2,10 @@ import * as Knex from "knex";
 import { Article } from "./models";
 
 
+// const knexConfig = require('../knexfile');
+// const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
+
+
 
 export class ArticleService {
 
@@ -23,13 +27,8 @@ export class ArticleService {
                     content: article.content,
                     reading_time: 4
                 })
-                
-            if (article.tag){
-                
-                
-                
-            }
-            
+
+
             return (articleResult.rows[0].id);
 
         })
@@ -67,6 +66,21 @@ export class ArticleService {
 
     }
 
+
+    // tag
+    async retrieveTagArticle(userId:number) {
+        const articles = await this.knex.raw(/*sql*/`
+            SELECT title, content, tag.name as tag_name, "user".id FROM "article"
+                JOIN "user" on "user".id = article.user_id
+                JOIN "tag_user" on tag_user.user_id = "user".id
+                JOIN "tag" on tag_user.tag_id = tag.id
+                WHERE "user".id = ${userId}
+               `)
+
+        return articles;
+
+
+    }
 
 
     // update article
@@ -110,3 +124,12 @@ export class ArticleService {
         await this.knex.destroy();
     }
 }
+
+// const articleService = new ArticleService(knex);
+
+// async function test(userId:number){
+//     const result = await articleService.retrieveTagArticle(userId);
+//     console.log(result);
+// }
+
+// test(492)

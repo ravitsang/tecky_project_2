@@ -24,9 +24,11 @@ export class EditorRouter{
 
     createArticle = async (req:Request,res:Response)=>{
         try{
-            const article = req.body;
-            const id = res.json(await this.editorService.create(article));
-            res.json({id:id})
+            const article = req.body.article;
+            const userId = req.body.userId
+            
+            const articleId = res.json(await this.editorService.create(article,userId));
+            res.json({id:articleId})
         }catch(err){
             res.status(400).json({msg:err.message})
         }

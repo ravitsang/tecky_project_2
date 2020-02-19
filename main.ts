@@ -5,9 +5,10 @@ import * as bodyParser from 'body-parser';
 import { UserRouter } from './routers/UserRouter';
 import { ArticleRouter } from './routers/ArticleRouter';
 import { SearchRouter } from './routers/SearchRouter';
-
+import * as passport from "passport";
 import * as Knex from 'knex';
-import * as passport from 'passport';
+import { EditorRouter } from './routers/EditorRouter';
+import { EditorService } from './services/EditorService';
 const knexConfig = require('./knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
@@ -55,6 +56,10 @@ app.post('/api/v1/login', new UserRouter().login);
 app.post('/api/v1/register', new UserRouter().register);
 app.get('/api/v1/search', new SearchRouter().search);
 app.use('/article', new ArticleRouter(knex).Router())
+const editorService = new EditorService(knex);
+app.use('/editor',new EditorRouter(editorService).router());
+
+
 
 app.use((req, res, next) => {
     if (req.session?.isLogin) {

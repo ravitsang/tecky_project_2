@@ -6,14 +6,22 @@ export class EditorService{
 
     }
 
-    async create(article:Article){
+    async create(article:Article,userId:number){
         const result = await this.knex.raw(`INSERT INTO "article" (
-            content
+            "user_id",
+            "title",
+            "content",
+            "reading_time"
         ) VALUES (
-
-            :content
+            :user_id,
+            :title,
+            :content,
+            :reading_time
         ) RETURNING id`,{
-            content: article.content
+            user_id: userId,
+            title: article.title,
+            content: article.content,
+            reading_time: 4
         })
         return result.rows[0].id
     }

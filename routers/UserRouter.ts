@@ -20,7 +20,7 @@ export class UserRouter {
         router.get('/', this.userInfo);
         router.get('/:user/', this.userPage);
         router.get('/:user/:title', this.articlePage);
-        router.post('/register', this.register);
+        router.post('/', this.register);
         return router;
     }
 
@@ -35,13 +35,20 @@ export class UserRouter {
     }
 
     userInfo = async (req: Request, res: Response, next: NextFunction) => {
-        if (req.session) {
-            const result = {
-                email: req.session.email,
-                name: req.session.name,
-                photo: req.session.photo
+        if (req.session?.passport.user.id) {
+            const result = await this.userService.retrieve();
+            const users: User[] = result.rows;
+            const found = users.find(user => user.id === req.session?.passport.user.id);
+            const user = {
+                id: found?.id,
+                name: found?.name,
+                email: found?.email,
+                link: found?.link,
+                photo: found?.photo,
+                membership: found?.membership
             }
-            res.json(result);
+            console.log(user);
+            res.json(user);
         } else {
             res.status(404).redirect('/');
         }
@@ -63,29 +70,20 @@ export class UserRouter {
     }
 
     register = async (req: Request, res: Response, next: NextFunction) => {
-        // const { email, password } = req.body;
-        // const result = await this.userService.create(email, password);
-        // if (result && req.session) {
-        //     req.session.isLogin = true;
-        //     req.session.email = email;
-        //     res.json({ status: true });
-        // } else {
-        //     res.json({ status: false });
-        // }
-        try{
-            const {email,password} = req.body
+        try {
+            const { email, password } = req.body
             const retrieve = await this.userService.retrieve();
             const users: User[] = retrieve.rows;
             const found = users.find(user => user.email === email);
-            if(!found){
-                const result = await this.userService.createUser(email,password);
-                console.log(result)
-                res.json({success:true})
-            }else if(found){
-                res.json({success:false})
+            if (!found) {
+                await this.userService.createUser(email, password);
+                // console.log(result)
+                res.json({ success: true })
+            } else if (found) {
+                res.json({ success: false })
             }
-        }catch(err){
-            res.status(400).json({msg:err.message})
+        } catch (err) {
+            res.status(400).json({ msg: err.message })
         }
     }
 }

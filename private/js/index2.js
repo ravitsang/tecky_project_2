@@ -2,7 +2,7 @@ $(document).ready(async function () {
     const res = await fetch('/api/v1/userInfo');
     const result = await res.json();
     const name = document.querySelector('#userinfo-table-name').innerHTML = result.name;
-    const username = document.querySelector('#userinfo-table-username').innerHTML = result.email;
+    const username = document.querySelector('#userinfo-table-username').innerHTML = `@${result.email.split('@')[0]}`;
     if (result.photo !== null) {
         const photo = document.querySelector('#userinfo-table-photo').src = result.photo;
     }

@@ -2,7 +2,7 @@ import * as passport from "passport";
 // import the passport local strategy
 import * as passportLocal from 'passport-local';
 import * as passportOauth2 from 'passport-oauth2';
-import { checkPassword,hashPassword } from "./hash";
+import { checkPassword, hashPassword } from "./hash";
 import * as dotenv from 'dotenv';
 import fetch from 'node-fetch';
 import { UserService } from "./services/UserService";
@@ -21,23 +21,25 @@ passport.use(new LocalStrategy({
     usernameField:"email",
     passwordField:"password"
     },
-    async function (email, password, done) {
 
+    async function (email, password, done) {
+        console.log(email);
+        console.log(password);
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
-        const found = users.find(user=>user.email === email);
-        if (!found){
-            done(null,false,{message:"Incorrect username"});
+        const found = users.find(user => user.email === email);
+        if (!found) {
+            done(null, false, { message: "Incorrect username" });
             return;
         }
         //Checking the password using hash function
-        const match = await checkPassword(password,found.password);
-        if(match){
+        const match = await checkPassword(password, found.password);
+        if (match) {
             //Sub into serializeUser, can access user later
             console.log('localStrategy');
-            done(null,{id:found.id});
-        }else{
-            done(null,false,{message:"Incorrect password"});
+            done(null, { id: found.id });
+        } else {
+            done(null, false, { message: "Incorrect password" });
             return;
         }
     }
@@ -65,17 +67,16 @@ passport.use('google', new OAuth2Strategy({
             }
         });
         const result = await res.json();
-        console.log(result);
-        console.log(result.email);
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
         let found = users.find((user) => user.email == result.email);
-        console.log(`found: ${found}`);
+        
+        // console.log(`found: ${found}`);
         if (!found) {
-            const createResult  = await userService.createUser(result.email,await hashPassword(Math.random().toString(36).substring(7)))
+            const createResult = await userService.createUser(result.email, await hashPassword(Math.random().toString(36).substring(7)))
             found = await createResult.rows[0]
         }
-        console.log(found);
+        // console.log(found);
         console.log('OAuth2Strategy');
         done(null, { accessToken, refreshToken, id: found?.id })
     }
@@ -85,8 +86,8 @@ passport.use('google', new OAuth2Strategy({
 // Run only in first time success login,
 // save user id in passport session and use it afterwards 
 passport.serializeUser(function (user: { id: number }, done) {
-    console.log('serializeUser');
-    console.log(user.id);
+    // console.log('serializeUser');
+    // console.log(user.id);
     done(null, user);
 });
 
@@ -94,6 +95,6 @@ passport.serializeUser(function (user: { id: number }, done) {
 // Run every time after login 
 // load the user from session
 passport.deserializeUser(function (user: { id: number }, done) {
-    console.log('deserializeUser');
+    // console.log('deserializeUser');
     done(null, user);
 }); 

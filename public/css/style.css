@@ -195,11 +195,17 @@
     margin-bottom: 15px;
     border: 1px rgba(0, 0, 0, 0.5) solid;
     border-radius: 5px;
+    text-decoration-line: none;
+
 }
 
 .modalSocial-btn:hover {
     border: 1px rgba(0, 0, 0, 1) solid;
+    text-decoration-line: none;
+    color:#000;
 }
+
+
 
 .modalSign-btn a {
     text-decoration-line: none;

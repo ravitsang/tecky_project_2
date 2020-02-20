@@ -7,6 +7,7 @@ import { Request, Response, NextFunction } from 'express';
 export function isLoggedIn(req:Request,res:Response,next:NextFunction){
  
     // req.session.passport.user
+    console.log('isloggedIn');
     console.log(req.user);
     if(req.user){ 
         next();
@@ -35,7 +36,7 @@ export function loginFlow(req: Request, res: Response, next: NextFunction) {
                     console.log('path3');
                     res.redirect("/login.html?error=" + "Failed to Login");
                 } else {
-                    console.log('path10');
+                    console.log('loginFlow');
                     res.redirect("/m");
                 }
             });

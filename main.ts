@@ -10,6 +10,9 @@ import * as passport from "passport";
 import * as Knex from 'knex';
 import { EditorRouter } from './routers/EditorRouter';
 import { EditorService } from './services/EditorService';
+import './passport';
+import { loginFlow, isLoggedIn} from './guards';
+
 const knexConfig = require('./knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
@@ -39,8 +42,6 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
-import './passport';
-import { loginFlow, isLoggedIn} from './guards';
 
 app.use(express.static('public'));
 
@@ -55,10 +56,10 @@ app.get('/auth/google/', passport.authenticate('google', {
 app.get('/auth/google/callback', (...rest) =>
     passport.authenticate('google', loginFlow(...rest))(...rest));
 
-// app.get('/logout', (req, res) => {
-//     req.logOut();
-//     res.redirect('/login.html')
-// })
+app.get('/logout', (req, res) => {
+    req.logOut();
+    res.redirect('/')
+})
 
 // app.post('/api/v1/login', new UserRouter().login);
 // app.post('/api/v1/register', new UserRouter().register);
@@ -78,7 +79,7 @@ app.use('/editor',new EditorRouter(editorService,upload).router());
 //     }
 // })
 
-app.use(isLoggedIn);
+// app.use(isLoggedIn);
 
 app.use('/m',isLoggedIn, express.static('private'));
 

@@ -268,11 +268,11 @@
                         <div class="modal-title">
                             <h2>Sign in with email</h2>
                         </div>
-                        <div class="modal-spec">Enter the mail address associated with your account, and we'll sen a
+                        <div class="modal-spec">Enter the mail address associated with your account, and we'll send a
                             magic link to your inbox</div>
                         <div class="modalInput">
                             <form id="login-email" method="POST"
-                                class="formClass d-flex justify-content-center align-items-center flex-wrap">
+                                class="formClass d-flex justify-content-center align-items-center flex-wrap" action="/login">
                                 <input type="text" placeholder="Your email" id="loginEmail" name="loginEmail" required/>
                                 <input type="password" placeholder="Your password" id="loginPassword" name="loginPassword" required/>
                                 <div id="loginerror-message"></div>

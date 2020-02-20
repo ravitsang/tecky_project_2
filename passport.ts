@@ -3,13 +3,11 @@ import * as passport from "passport";
 import * as passportLocal from 'passport-local';
 import * as passportOauth2 from 'passport-oauth2';
 import { checkPassword,hashPassword } from "./hash";
-
 import * as dotenv from 'dotenv';
-//import { RestaurantAll } from "./services/model";
 import fetch from 'node-fetch';
 import { UserService } from "./services/UserService";
 import { User } from "./services/models";
-// import { foodieService } from "./main";
+
 //import * as fetch from 'node-fetch';????
 
 
@@ -24,39 +22,6 @@ passport.use(new LocalStrategy({
     passwordField:"password"
     },
     async function (email, password, done) {
-        // const restaurants = await restaurantService.retrieve();
-        // const foodies = await foodieService.retrieve();
-        // const restaurantFound = restaurants.find((restaurant) => restaurant.username == username);
-        // const foodieFound = foodies.find(foodie => foodie.username == username)
-
-        // if (!restaurantFound && !foodieFound) {
-        //     console.log('path A');
-        //     return done(null, false, { message: 'Incorrect username!' });
-        // }
-
-        // if (restaurantFound) {
-        //     const match = await checkPassword(password, restaurantFound.password);
-        //     if (!match) {
-        //         console.log('path B');
-        //         return done(null, false, { message: 'Incorrect password!' });
-        //     } else {
-        //         console.log('path RC');
-        //         // success case :  pass to serialize user and save in session
-        //         return done(null, { userType: 'restaurant', id: restaurantFound.id });
-        //     }
-        // }
-
-        // if (foodieFound) {
-        //     const match = await checkPassword(password, foodieFound.password);
-        //     if (!match) {
-        //         console.log('path B');
-        //         return done(null, false, { message: 'Incorrect password!' });
-        //     } else {
-        //         console.log('path FC');
-        //         // success case :  pass to serialize user and save in session
-        //         return done(null, { userType: 'foodie', id: foodieFound.id });
-        //     }
-        // }
 
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
@@ -69,6 +34,7 @@ passport.use(new LocalStrategy({
         const match = await checkPassword(password,found.password);
         if(match){
             //Sub into serializeUser, can access user later
+            console.log('localStrategy');
             done(null,{id:found.id});
         }else{
             done(null,false,{message:"Incorrect password"});
@@ -110,7 +76,7 @@ passport.use('google', new OAuth2Strategy({
             found = await createResult.rows[0]
         }
         console.log(found);
-        console.log('test');
+        console.log('OAuth2Strategy');
         done(null, { accessToken, refreshToken, id: found?.id })
     }
 ));
@@ -119,7 +85,7 @@ passport.use('google', new OAuth2Strategy({
 // Run only in first time success login,
 // save user id in passport session and use it afterwards 
 passport.serializeUser(function (user: { id: number }, done) {
-    console.log('path D');
+    console.log('serializeUser');
     console.log(user.id);
     done(null, user);
 });
@@ -128,6 +94,6 @@ passport.serializeUser(function (user: { id: number }, done) {
 // Run every time after login 
 // load the user from session
 passport.deserializeUser(function (user: { id: number }, done) {
-    console.log('path E');
+    console.log('deserializeUser');
     done(null, user);
 }); 

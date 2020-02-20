@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - testing
+  - deploy
 
 variables:
   POSTGRES_DB: gitlab_db
@@ -19,3 +20,24 @@ testing:
   stage: testing
   script:
     - yarn jest
+
+
+deploy:
+  before_script:
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' > private.pem
+    - chmod 400 private.pem
+    - ssh-add private.pem > /dev/null
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-keyscan -H  readium.tk > ~/.ssh/known_hosts
+    - chmod 644 ~/.ssh/known_hosts
+  stage: deploy
+  script:
+    - ssh ubuntu@readium.tk
+        "cd BAD009-Example;
+          git pull origin master;
+          yarn install;
+          yarn knex migrate:latest --env production;
+          forever restart index.js;"

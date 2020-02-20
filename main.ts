@@ -31,7 +31,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import './passport';
-import { loginFlow} from './guards';
+import { loginFlow,isLoggedIn} from './guards';
 
 app.use(express.static('public'));
 
@@ -61,15 +61,15 @@ app.use('/editor',new EditorRouter(editorService).router());
 
 
 
-app.use((req, res, next) => {
-    if (req.session?.isLogin) {
-        next();
-    } else {
-        res.status(401).redirect('/');
-    }
-})
+// app.use((req, res, next) => {
+//     if (req.session?.isLogin) {
+//         next();
+//     } else {
+//         res.status(401).redirect('/');
+//     }
+// })
 
-// app.use(isLoggedIn);
+app.use(isLoggedIn);
 
 app.use('/m', express.static('private'));
 

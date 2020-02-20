@@ -99,6 +99,7 @@ passport.use('google', new OAuth2Strategy({
 // save user id in passport session and use it afterwards 
 passport.serializeUser(function (user: { id: number }, done) {
     console.log('path D');
+    console.log(user.id);
     done(null, user);
 });
 

@@ -1,8 +1,8 @@
 import * as passport from "passport";
 // import the passport local strategy
-// import * as passportLocal from 'passport-local';
+import * as passportLocal from 'passport-local';
 import * as passportOauth2 from 'passport-oauth2';
-import { hashPassword } from "./hash";
+import { checkPassword,hashPassword } from "./hash";
 
 import * as dotenv from 'dotenv';
 //import { RestaurantAll } from "./services/model";
@@ -16,45 +16,66 @@ import { User } from "./services/models";
 dotenv.config();
 
 const userService = new UserService();
-// const LocalStrategy = passportLocal.Strategy;
+const LocalStrategy = passportLocal.Strategy;
 // checking result will pass to loginFlow in guards anyway
-// passport.use(new LocalStrategy(
-//     async function (username, password, done) {
-//         // const restaurants = await restaurantService.retrieve();
-//         // const foodies = await foodieService.retrieve();
-//         // const restaurantFound = restaurants.find((restaurant) => restaurant.username == username);
-//         // const foodieFound = foodies.find(foodie => foodie.username == username)
+passport.use(new LocalStrategy({
+    // Tackle error:Missing Credentials
+    usernameField:"email",
+    passwordField:"password"
+    },
+    async function (email, password, done) {
+        // const restaurants = await restaurantService.retrieve();
+        // const foodies = await foodieService.retrieve();
+        // const restaurantFound = restaurants.find((restaurant) => restaurant.username == username);
+        // const foodieFound = foodies.find(foodie => foodie.username == username)
 
-//         if (!restaurantFound && !foodieFound) {
-//             console.log('path A');
-//             return done(null, false, { message: 'Incorrect username!' });
-//         }
+        // if (!restaurantFound && !foodieFound) {
+        //     console.log('path A');
+        //     return done(null, false, { message: 'Incorrect username!' });
+        // }
 
-//         if (restaurantFound) {
-//             const match = await checkPassword(password, restaurantFound.password);
-//             if (!match) {
-//                 console.log('path B');
-//                 return done(null, false, { message: 'Incorrect password!' });
-//             } else {
-//                 console.log('path RC');
-//                 // success case :  pass to serialize user and save in session
-//                 return done(null, { userType: 'restaurant', id: restaurantFound.id });
-//             }
-//         }
+        // if (restaurantFound) {
+        //     const match = await checkPassword(password, restaurantFound.password);
+        //     if (!match) {
+        //         console.log('path B');
+        //         return done(null, false, { message: 'Incorrect password!' });
+        //     } else {
+        //         console.log('path RC');
+        //         // success case :  pass to serialize user and save in session
+        //         return done(null, { userType: 'restaurant', id: restaurantFound.id });
+        //     }
+        // }
 
-//         if (foodieFound) {
-//             const match = await checkPassword(password, foodieFound.password);
-//             if (!match) {
-//                 console.log('path B');
-//                 return done(null, false, { message: 'Incorrect password!' });
-//             } else {
-//                 console.log('path FC');
-//                 // success case :  pass to serialize user and save in session
-//                 return done(null, { userType: 'foodie', id: foodieFound.id });
-//             }
-//         }
-//     }
-// ));
+        // if (foodieFound) {
+        //     const match = await checkPassword(password, foodieFound.password);
+        //     if (!match) {
+        //         console.log('path B');
+        //         return done(null, false, { message: 'Incorrect password!' });
+        //     } else {
+        //         console.log('path FC');
+        //         // success case :  pass to serialize user and save in session
+        //         return done(null, { userType: 'foodie', id: foodieFound.id });
+        //     }
+        // }
+
+        const retrieve = await userService.retrieve();
+        const users: User[] = await retrieve.rows;
+        const found = users.find(user=>user.email === email);
+        if (!found){
+            done(null,false,{message:"Incorrect username"});
+            return;
+        }
+        //Checking the password using hash function
+        const match = await checkPassword(password,found.password);
+        if(match){
+            //Sub into serializeUser, can access user later
+            done(null,{id:found.id});
+        }else{
+            done(null,false,{message:"Incorrect password"});
+            return;
+        }
+    }
+));
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;

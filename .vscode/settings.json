@@ -46,15 +46,6 @@
             "username": "sinwaitsang"
         },
         {
-            "database": "tecky_project_2",
-            "dialect": "PostgreSQL",
-            "name": "tecky_project_2",
-            "password": "sinwaitsang",
-            "port": 5432,
-            "server": "localhost",
-            "username": "sinwaitsang"
-        },
-        {
             "database": "project2dev",
             "dialect": "PostgreSQL",
             "name": "Project2Dev",
@@ -62,6 +53,15 @@
             "port": 5432,
             "server": "localhost",
             "username": "matthew"
+        },
+        {
+            "database": "project-two",
+            "dialect": "PostgreSQL",
+            "name": "project-two",
+            "password": "lexington",
+            "port": 5432,
+            "server": "localhost",
+            "username": "lexington"
         }
     ]
 }

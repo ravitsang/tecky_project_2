@@ -2,6 +2,7 @@
 import * as express from 'express';
 import * as expressSession from 'express-session';
 import * as bodyParser from 'body-parser';
+import * as multer from 'multer';
 import { UserRouter } from './routers/UserRouter';
 import { ArticleRouter } from './routers/ArticleRouter';
 import { SearchRouter } from './routers/SearchRouter';
@@ -12,7 +13,15 @@ import { EditorService } from './services/EditorService';
 const knexConfig = require('./knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
-
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, `${__dirname}/private/uploads`);
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${file.fieldname}-${Date.now()}.${file.mimetype.split('/')[1]}`);
+    }
+  })
+const upload = multer({storage})
 
 const app = express();
 
@@ -31,13 +40,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import './passport';
-import { loginFlow,isLoggedIn} from './guards';
+import { loginFlow, isLoggedIn} from './guards';
 
 app.use(express.static('public'));
 
 app.post('/login', (...rest) => //rest = req, res, next)
     passport.authenticate('local', loginFlow(...rest))(...rest));
-
 
 app.get('/auth/google/', passport.authenticate('google', {
     scope: ['email', 'profile']
@@ -52,12 +60,13 @@ app.get('/auth/google/callback', (...rest) =>
 //     res.redirect('/login.html')
 // })
 
-app.post('/api/v1/login', new UserRouter().login);
-app.post('/api/v1/register', new UserRouter().register);
+// app.post('/api/v1/login', new UserRouter().login);
+// app.post('/api/v1/register', new UserRouter().register);
+app.post('/register',new UserRouter().register);
 app.get('/api/v1/search', new SearchRouter().search);
 app.use('/article', new ArticleRouter(knex).Router())
 const editorService = new EditorService(knex);
-app.use('/editor',new EditorRouter(editorService).router());
+app.use('/editor',new EditorRouter(editorService,upload).router());
 
 
 
@@ -71,7 +80,7 @@ app.use('/editor',new EditorRouter(editorService).router());
 
 app.use(isLoggedIn);
 
-app.use('/m', express.static('private'));
+app.use('/m',isLoggedIn, express.static('private'));
 
 const PORT = 8080;
 app.listen(PORT, () => {

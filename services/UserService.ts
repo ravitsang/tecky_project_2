@@ -1,4 +1,5 @@
 import * as Knex from "knex";
+import { hashPassword } from '../hash'
 import { User } from "./models";
 const knexConfig = require('../knexfile');
 const knex = Knex(knexConfig[process.env.NODE_END || 'development'])
@@ -34,17 +35,15 @@ export class UserService {
 
     // passport
     async createUser(email: string, password: string) {
-    
         const name = email.split('@')[0];
         console.log(name);
         const result = await knex.raw(/*sql*/ `INSERT INTO "user" ("name","email","password") VALUES(:name, :email, :password) RETURNING id`, {
             name: name,
             email: email,
-            password: password
+            password: await hashPassword(password)
         });
         console.log(result);
         return result
-
     }
 
 

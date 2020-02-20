@@ -14,7 +14,7 @@ export class UserService {
     //create
 
     async create(email: string, password: string) {
-        const retrieve = await this.retrieve();
+        const retrieve = await this.retrieve(email);
         const users: User[] = retrieve.rows;
         const found = users.find(user => user.email === email);
         if (!found) {
@@ -23,16 +23,17 @@ export class UserService {
                 email: email,
                 password: password
             });
-            return true;
+            return found;
         } else {
             return false;
         }
-
     }
 
     //retrieve
-    async retrieve() {
-        return await knex.raw(/* sql */ `SELECT * FROM "user"`)
+    async retrieve(email:string) {
+        return await knex.raw(/* sql */ `SELECT * FROM "user" WHERE email=:email`,{
+            email:email
+        })
     }
 
     //update
@@ -48,11 +49,11 @@ export class UserService {
 
     //login
     async login(email: string, password: string) {
-        const retrieve = await this.retrieve();
+        const retrieve = await this.retrieve(email);
         const users: User[] = retrieve.rows;
         const found = users.find(user => user.email === email && user.password === password);
         if (found) {
-            return true;
+            return found;
         } else {
             return false;
         }

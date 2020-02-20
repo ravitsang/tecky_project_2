@@ -1,3 +1,4 @@
+
 document.querySelector('#login-email')
     .addEventListener('submit', async function (event) {
         event.preventDefault();
@@ -14,7 +15,7 @@ document.querySelector('#login-email')
         })
         const result = await res.json();
         if (result.status === true) {
-            window.location = "/m";
+            window.location = `/`;
         } else if (result.status === false) {
             document.querySelector('#loginerror-message').innerHTML = "";
             const alertBox = document.createElement('div');
@@ -41,7 +42,7 @@ document.querySelector('#reg-email')
         })
         const result = await res.json();
         if (result.status === true) {
-            window.location = "/m";
+            window.location = `/`;
         } else if (result.status === false) {
             document.querySelector('#regerror-message').innerHTML = "";
             const alertBox = document.createElement('div');

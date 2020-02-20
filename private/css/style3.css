@@ -1,0 +1,48 @@
+.userinfo-table {
+    padding: 5px;
+}
+
+.userinfo-table .userinfo {
+    font-size: 14px;
+    text-align: left;
+    padding: 5px;
+}
+
+.userinfo-table .userinfo .userinfo-table-username {
+    color: #757575;
+}
+
+.user-member {
+    text-align: left;
+    padding: 15px 10px 15px 25px;
+    border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
+    font-size:14px;
+}
+
+.user-member a {
+    color: rgba(2, 158, 116, 0.8);
+}
+
+.user-member a:hover {
+    color: rgba(2, 158, 116, 1);
+}
+
+.userinfo-list{
+    list-style-type: none;
+    padding:0;
+    margin:5px 0 0 0;
+    font-size:14px;
+}
+
+.userinfo-list a{
+    color:rgba(0,0,0,0.6);
+}
+
+.userinfo-list a:hover{
+    color:rgba(0,0,0,1);
+}
+
+.userinfo-list-item{
+    padding:10px;
+    text-align: left;
+}

@@ -15,7 +15,7 @@ const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, `${__dirname}/uploads`);
+      cb(null, `${__dirname}/private/uploads`);
     },
     filename: function (req, file, cb) {
       cb(null, `${file.fieldname}-${Date.now()}.${file.mimetype.split('/')[1]}`);
@@ -47,7 +47,6 @@ app.use(express.static('public'));
 app.post('/login', (...rest) => //rest = req, res, next)
     passport.authenticate('local', loginFlow(...rest))(...rest));
 
-
 app.get('/auth/google/', passport.authenticate('google', {
     scope: ['email', 'profile']
 })); // API scopes that want to access from user / there are many scopes can use
@@ -61,8 +60,9 @@ app.get('/auth/google/callback', (...rest) =>
 //     res.redirect('/login.html')
 // })
 
-app.post('/api/v1/login', new UserRouter().login);
-app.post('/api/v1/register', new UserRouter().register);
+// app.post('/api/v1/login', new UserRouter().login);
+// app.post('/api/v1/register', new UserRouter().register);
+app.post('/register',new UserRouter().register);
 app.get('/api/v1/search', new SearchRouter().search);
 app.use('/article', new ArticleRouter(knex).Router())
 const editorService = new EditorService(knex);
@@ -70,13 +70,13 @@ app.use('/editor',new EditorRouter(editorService,upload).router());
 
 
 
-app.use((req, res, next) => {
-    if (req.session?.isLogin) {
-        next();
-    } else {
-        res.status(401).redirect('/');
-    }
-})
+// app.use((req, res, next) => {
+//     if (req.session?.isLogin) {
+//         next();
+//     } else {
+//         res.status(401).redirect('/');
+//     }
+// })
 
 // app.use(isLoggedIn);
 

@@ -35,7 +35,7 @@ export function loginFlow(req: Request, res: Response, next: NextFunction) {
                     console.log('path3');
                     res.redirect("/login.html?error=" + "Failed to Login");
                 } else {
-                    res.redirect("/m");
+                    res.json({success:true});
                 }
             });
         }

@@ -13,6 +13,7 @@ export async function seed(knex: Knex): Promise<any> {
     await knex('follower').del();
     await knex('user').del();
     await knex('searching_key').del();
+    await knex('tag_user').del();
 
     const [raviId, lexieId, matthewId] = await knex('user').insert([
         { name: 'Ravi', password: '1234', email: "ravitsang@gmail.com", link: 'https://www.facebook.com/ravi.tsang' },
@@ -80,5 +81,14 @@ export async function seed(knex: Knex): Promise<any> {
         { user_id: lexieId, article_id: article_ids[0], comment: "Nice article!!" },
         { user_id: raviId, article_id: article_ids[3], comment: "Thanks for sharing!" },
         { user_id: matthewId, article_id: article_ids[1], comment: "Well Done!" }
+    ]).returning('id');
+
+    await knex('tag_user').insert([
+        { user_id: raviId, tag_id: tag_ids[0] },
+        { user_id: raviId, tag_id: tag_ids[1] },
+        { user_id: lexieId, tag_id: tag_ids[0] },
+        { user_id: lexieId, tag_id: tag_ids[1] },
+        { user_id: matthewId, tag_id: tag_ids[1] },
+        { user_id: matthewId, tag_id: tag_ids[2] }
     ]).returning('id');
 };

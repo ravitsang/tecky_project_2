@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as multer from 'multer'
 import {Request,Response} from 'express';
-import { EditorService } from '../services/editorService';
+import { EditorService } from '../services/EditorService';
 
 type Multer = ReturnType<typeof multer>;
 

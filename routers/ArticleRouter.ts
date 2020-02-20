@@ -1,65 +1,78 @@
-import { Request , Response, NextFunction} from 'express';
+import { Request, Response } from 'express';
 import { ArticleService } from './../services/ArticleService';
+// import { TagService } from '../services/TagService';
 import * as express from 'express';
 import * as Knex from 'knex';
+import { Article } from '../services/models';
 
 
 
 
 export class ArticleRouter {
 
-    private articleService:ArticleService;
+    private articleService: ArticleService;
+    // private tagService:TagService;
 
-    constructor(private knex:Knex){
+    constructor(private knex: Knex) {
 
         this.articleService = new ArticleService(this.knex)
+        // this.tagService = new TagService(this.knex)
 
     }
 
 
-    Router (){
+    Router() {
         // create a router
         const router = express.Router();
 
         // no need to call this.create()?
+        router.get('/showTopic', this.retrieveTopicArticle)
         router.post('/create', this.create)
-
         // return the router to the main
         return router;
     }
 
 
-        // create article
-        // not need to add const 
-        create = async (req:Request, res:Response) => {
-            const article = req.body.article
-            const userId = req.body.userId
+    // retrieve the articles related to certain topics
+    retrieveTopicArticle = async (req: Request, res: Response) => {
+        // const article = req.body.article
+        // const userId = req.body.userId
+        const userId = 492;
 
-            const articleId = await this.articleService.create(article, userId);
-            
+        const articles = await this.articleService.retrieveTagArticle(userId);
+        console.log('hi');
+        res.json({ article: articles.rows })
 
-            res.json({id:articleId})
+    }
 
-        }
+    // create article
+    create = async (req: Request, res: Response) => {
+        const article: Article = req.body.article
+        const userId: number = req.body.userId
 
-        // retrieve article
-        // retrieveAll = async (req:Request, res:Response) => {
-        //     const article = req.body.article
-        //     const userId = req.body.userId
+        const articleId = await this.articleService.create(article, userId);
 
-        //     const articleId = await this.articleService.create(article, userId);
 
-        //     res.json({id:articleId})
+        // if (article.tag){
+
+        //     await this.tagService.retrieve(article.tag);
 
         // }
-        // update article
-        update(){
-    
-        }
-        // delete article
-        delete(){
-    
-    
-        }
+
+
+        res.json({ id: articleId })
+
+    }
+
+
+    // update article
+    update() {
+
+    }
+    // delete article
+    delete = async (req: Request, res: Response) => {
+
+
+    }
 
 }

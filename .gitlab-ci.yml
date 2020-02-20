@@ -36,7 +36,7 @@ deploy:
   stage: deploy
   script:
     - ssh ubuntu@readium.tk
-        "cd BAD009-Example;
+        "cd tecky-project-2;
           git pull origin master;
           yarn install;
           yarn knex migrate:latest --env production;

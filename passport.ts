@@ -61,14 +61,12 @@ passport.use(new LocalStrategy({
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
         const found = users.find(user=>user.email === email);
-        console.log(found);
         if (!found){
             done(null,false,{message:"Incorrect username"});
             return;
         }
         //Checking the password using hash function
         const match = await checkPassword(password,found.password);
-        console.log(match)
         if(match){
             //Sub into serializeUser, can access user later
             done(null,{id:found.id});

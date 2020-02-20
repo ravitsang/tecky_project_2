@@ -40,7 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import './passport';
-import { loginFlow} from './guards';
+import { loginFlow, isLoggedIn} from './guards';
 
 app.use(express.static('public'));
 
@@ -80,7 +80,7 @@ app.use('/editor',new EditorRouter(editorService,upload).router());
 
 // app.use(isLoggedIn);
 
-app.use('/m', express.static('private'));
+app.use('/m',isLoggedIn, express.static('private'));
 
 const PORT = 8080;
 app.listen(PORT, () => {

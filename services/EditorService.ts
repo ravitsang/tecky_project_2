@@ -1,19 +1,26 @@
 import * as Knex from 'knex';
-import { Article } from './models';
 
 export class EditorService{
     constructor(private knex:Knex){
 
     }
 
-    async create(article:Article){
+    async create(title:string,content:string,userId:number){
         const result = await this.knex.raw(`INSERT INTO "article" (
-            content
+            "user_id",
+            "title",
+            "content",
+            "reading_time"
         ) VALUES (
-
-            :content
+            :user_id,
+            :title,
+            :content,
+            :reading_time
         ) RETURNING id`,{
-            content: article.content
+            user_id: userId,
+            title: title,
+            content: content,
+            reading_time: 4
         })
         return result.rows[0].id
     }

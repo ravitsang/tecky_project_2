@@ -82,7 +82,7 @@ async function importData() {
 
                 console.log(articleDetail.tag);
                 const tags = articleDetail.tag.split(',');
-                console.log(tags);
+                // console.log(tags);
                 for (let tag of tags) {
 
                     // if the tag cannot find from tagList, insert the tag

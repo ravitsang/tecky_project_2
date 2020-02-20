@@ -27,6 +27,7 @@ window.onload=()=>{
                 'highlight',
                 '|',
                 'imageUpload',
+                "mediaEmbed",
                 'blockQuote',
                 'undo',
                 'redo'
@@ -34,11 +35,17 @@ window.onload=()=>{
         },
         language: 'en',
         image: {
-            upload:{},
+            simpleUpload:{
+                // The URL that the images are uploaded to.
+                uploadUrl: 'http://example.com'
+            },
             toolbar: [
                 'imageTextAlternative'
             ]
         },
+        mediaEmbed:{
+
+        }
     })
     .then(newEditor=>{
         editor = newEditor;
@@ -82,6 +89,12 @@ window.onload=()=>{
             const editorData = await editor.getData();
             console.log(editorData)
 
+            let domParser = new DOMParser();
+            let doc = domParser.parseFromString(editorData,'text/html')
+            const title = doc.querySelector('h1').textContent
+            console.log(title)
+            const content = doc.querySelectorAll('figure')
+            
             const res = await fetch ('/editor',{
                 method:"POST",
                 headers:{

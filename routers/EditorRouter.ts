@@ -1,16 +1,19 @@
 import * as express from 'express';
+import * as multer from 'multer'
 import {Request,Response} from 'express';
 import { EditorService } from '../services/editorService';
 
+type Multer = ReturnType<typeof multer>;
+
 export class EditorRouter{
-    constructor(private editorService:EditorService){
+    constructor(private editorService:EditorService,private upload:Multer){
 
     }
 
     router(){
         const editorRouter = express.Router();
         editorRouter.get('/',this.getArticles);
-        editorRouter.post('/',this.createArticle);
+        editorRouter.post('/',this.upload.array(''),this.createArticle);
         return editorRouter;
     }
 
@@ -26,7 +29,7 @@ export class EditorRouter{
         try{
             const article = req.body.article;
             const userId = req.body.userId
-            
+            req.files
             const articleId = res.json(await this.editorService.create(article,userId));
             res.json({id:articleId})
         }catch(err){

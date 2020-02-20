@@ -22,10 +22,10 @@ describe('Test database', () => {
 
         })
 
-        afterAll(async () => {
-            await knex.destroy();
-        })
-
-
     })
+
+    afterAll(async () => {
+        await knex.destroy();
+    })
+
 })

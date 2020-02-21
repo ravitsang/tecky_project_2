@@ -15,3 +15,14 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.button {
+    background-color: rgba(2, 158, 116, 0.85);
+    border: 0;
+    color: white;
+    border-radius: 3px;
+}
+.button:hover {
+    background-color: rgba(2, 158, 116, 1);
+    color: white;
+}

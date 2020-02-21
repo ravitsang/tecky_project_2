@@ -16,13 +16,10 @@ dotenv.config();
 const userService = new UserService();
 const LocalStrategy = passportLocal.Strategy;
 // checking result will pass to loginFlow in guards anyway
-passport.use(new LocalStrategy({
-    // Tackle error:Missing Credentials
-    usernameField:"email",
-    passwordField:"password"
-    },
+passport.use(new LocalStrategy(
+    
     async function (email, password, done) {
-
+        console.log('localStrategy');
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
         const found = users.find(user=>user.email === email);
@@ -34,7 +31,7 @@ passport.use(new LocalStrategy({
         const match = await checkPassword(password,found.password);
         if(match){
             //Sub into serializeUser, can access user later
-            console.log('localStrategy');
+            
             done(null,{id:found.id});
         }else{
             done(null,false,{message:"Incorrect password"});

@@ -40,7 +40,6 @@ export class ArticleRouter {
         const userId = 492;
 
         const articles = await this.articleService.retrieveTagArticle(userId);
-        console.log('hi');
         res.json({ article: articles.rows })
 
     }

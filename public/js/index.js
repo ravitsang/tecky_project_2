@@ -1,42 +1,56 @@
-document.querySelector('#login-email')
-    .addEventListener('submit', async function (event) {
-        event.preventDefault();
-        const form = event.target;
-        // const res = await fetch('/api/v1/login', {
-        //     method: "post",
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //     },
-        //     body: JSON.stringify({
-        //         email: form.loginEmail.value,
-        //         password: form.loginPassword.value
-        //     })
-        // })
-        const res = await fetch('/login', {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                email: form.loginEmail.value,
-                password: form.loginPassword.value
-            })
-        })
-        console.log(`res:${res}`)
+// document.querySelector('#login-email')
+//     .addEventListener('submit', async function (event) {
+//         event.preventDefault();
+//         const form = event.target;
+//         // const res = await fetch('/api/v1/login', {
+//         //     method: "post",
+//         //     headers: {
+//         //         "Content-Type": "application/json",
+//         //     },
+//         //     body: JSON.stringify({
+//         //         email: form.loginEmail.value,
+//         //         password: form.loginPassword.value
+//         //     })
+//         // })
+//         const res = await fetch('/login', {
+//             method: "post",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({
+//                 email: form.loginEmail.value,
+//                 password: form.loginPassword.value
+//             })
+//         })
+//         // console.log(`res:${res}`)
+//         console.log('test');
+//         const result = await res.json();
+//         console.log(result);
 
-        const result = await res.json();
-        console.log(`result:${result}`)
-        console.log(`result.status:${result.status}`)
-        if (result.success) {
-            window.location = "/m";
-        } else if (!result.success) {
-            document.querySelector('#loginerror-message').innerHTML = "";
-            const alertBox = document.createElement('div');
-            alertBox.textContent = `Please enter a valid email address or password.`;
-            document.querySelector('#loginerror-message').appendChild(alertBox);
-        }
+//         // console.log(`result:${result}`)
+//         // console.log(`result.status:${result.status}`)
 
-    })
+//         if (result.success) {
+//             window.location = "/m";
+//         } else if (!result.success) {
+//             document.querySelector('#loginerror-message').innerHTML = "";
+//             const alertBox = document.createElement('div');
+//             alertBox.textContent = `Please enter a valid email address or password.`;
+//             document.querySelector('#loginerror-message').appendChild(alertBox);
+//         }
+
+//     })
+
+const searchParams = new URLSearchParams(window.location.search);
+const errMessage = searchParams.get('error');
+console.log(errMessage);
+console.log('test');
+if (errMessage) {
+    document.querySelector('#loginerror-message').innerHTML = "";
+    const alertBox = document.createElement('div');
+    alertBox.textContent = `Please enter a valid email address or password.`;
+    document.querySelector('#loginerror-message').appendChild(alertBox);
+}
 
 
 document.querySelector('#reg-email')

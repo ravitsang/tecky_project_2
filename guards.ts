@@ -4,14 +4,14 @@ import { Request, Response, NextFunction } from 'express';
 
 
 // check if restaurant user loggedIn
-export function isLoggedIn(req:Request,res:Response,next:NextFunction){
- 
+export function isLoggedIn(req: Request, res: Response, next: NextFunction) {
+
     // req.session.passport.user
     console.log('isloggedIn');
-    console.log(req.user);
-    if(req.user){ 
+    console.log(req.user.id);
+    if (req.user) {
         next();
-    }else{
+    } else {
         res.redirect('./');
     }
 }
@@ -26,18 +26,15 @@ export function loginFlow(req: Request, res: Response, next: NextFunction) {
             res.redirect("/login.html?error=" + err.message);
         } else if (info && info.message) {
             console.log('path2');
-            console.log(info.message);
-            // Login fail case: incorrect username or password 
-            res.redirect("/login.html?error=" + info.message);// pass data in query params
+            res.redirect("/login.html?error=" + info.message);
         } else {
-            // log in??
             req.logIn(user, (err) => {
                 if (err) {
                     console.log('path3');
                     res.redirect("/login.html?error=" + "Failed to Login");
                 } else {
-                    console.log('loginFlow');
-                    res.redirect("/m");
+                    console.log('path4')
+                    res.redirect("/m");// 如果login 成功
                 }
             });
         }

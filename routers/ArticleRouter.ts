@@ -37,10 +37,14 @@ export class ArticleRouter {
     retrieveTopicArticle = async (req: Request, res: Response) => {
         // const article = req.body.article
         // const userId = req.body.userId
-        const userId = 492;
-
-        const articles = await this.articleService.retrieveTagArticle(userId);
-        res.json({ article: articles.rows })
+        // const userId = 492;
+        const userId = req.user.id;
+        console.log(userId);
+        const tags = await this.articleService.getUserTagName(userId);
+        console.log({tagName:tags});
+        const articles = await this.articleService.getTagsArticle(tags);
+        console.log({articles:articles});
+        res.json({ article: articles})
 
     }
 

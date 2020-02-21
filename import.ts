@@ -1,4 +1,4 @@
-import { Tag, ImportArticle } from './model/importCsvModel';
+import { ImportArticle } from './model/importCsvModel';
 import * as Knex from 'knex';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -45,6 +45,7 @@ async function importData() {
             await trx.raw(/*sql */ `DELETE FROM "history"`)
             await trx.raw(/*sql */ `DELETE FROM "bookmark"`)
             await trx.raw(/*sql */ `DELETE FROM "article"`)
+            await trx.raw(/*sql */ `DELETE FROM "tag_user"`)
             await trx.raw(/*sql */ `DELETE FROM "tag"`)
             await trx.raw(/*sql */ `DELETE FROM "follower"`)
             await trx.raw(/*sql */ `DELETE FROM "user"`)

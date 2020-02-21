@@ -3,7 +3,7 @@ import { Article } from "./models";
 
 
 // const knexConfig = require('../knexfile');
-// const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
+// const knex = Knex(knexConfig["development"])
 
 
 
@@ -66,18 +66,61 @@ export class ArticleService {
 
     }
 
+    async getUserTagName(userId: number) {
+        let tags = [];
+        const tagNameResult = await this.knex.raw(/*sql*/`
+            SELECT * FROM "tag_user"
+                JOIN "user" on "user".id = tag_user.user_id
+                JOIN "tag" on tag.id = tag_user.tag_id
+                WHERE "user".id = ${userId}`
+        )
+        for (const tag of tagNameResult.rows){
+            tags.push(tag.name)
+        }
+        
+        return tags;
 
-    // tag
-    async retrieveTagArticle(userId:number) {
+
+    }
+
+// select * from tag_user where tag_user.user_id = 591
+
+    async getTagsArticle(tags:string[]) {
+
         const articles = await this.knex.raw(/*sql*/`
-            SELECT title, content, tag.name as tag_name, "user".id FROM "article"
+            SELECT title, content, tag.name as tag_name, "user".id as user_id, article.user_id as author_id  FROM "article"
                 JOIN "user" on "user".id = article.user_id
                 JOIN "tag_user" on tag_user.user_id = "user".id
                 JOIN "tag" on tag_user.tag_id = tag.id
-                WHERE "user".id = ${userId}
-               `)
+                WHERE tag.name = :tagName`,
+                {
+                    tagName:tags[1]
+                })
 
-        return articles;
+        let articleResult = await articles.rows;
+        
+
+        let index = 0;
+        for (let article of articleResult){
+            
+            const authorId = await article.author_id;
+
+            const authorNameResult = await this.knex.raw(/*sql*/`
+                SELECT name FROM "user"
+                    WHERE "user".id = ${authorId} 
+                    `)
+
+            const authorName  = await authorNameResult.rows[0].name
+
+            articleResult[index].author_name = authorName;
+            index ++;
+                
+        }
+
+        // console.log({articleResult:articleResult});
+
+        return articleResult;
+        // return {articles:articles , authorNames: authorName};
 
 
     }
@@ -132,4 +175,4 @@ export class ArticleService {
 //     console.log(result);
 // }
 
-// test(492)
+// test(509)

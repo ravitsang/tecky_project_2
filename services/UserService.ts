@@ -13,7 +13,6 @@ export class UserService {
 
 
     //create
-
     async create(email: string, password: string) {
         const retrieve = await this.retrieve();
         const users: User[] = retrieve.rows;
@@ -30,7 +29,6 @@ export class UserService {
         } else {
             return false;
         }
-
     }
 
     // passport
@@ -45,11 +43,6 @@ export class UserService {
         console.log(result);
         return result
     }
-
-
-
-
-
 
     //retrieve
     async retrieve() {
@@ -73,7 +66,7 @@ export class UserService {
         const users: User[] = retrieve.rows;
         const found = users.find(user => user.email === email && user.password === password);
         if (found) {
-            return true;
+            return found;
         } else {
             return false;
         }
@@ -86,15 +79,3 @@ export class UserService {
 
 
 }
-
-// const userService = new UserService();
-
-// async function test() {
-//     const result  = await userService.retrieve();
-//     console.log(result.rows);
-//     const user = result.rows.find((user) => user.email == "ravitsang@gmail.com");
-//     console.log(user);
-// }
-
-
-// test()

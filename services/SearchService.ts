@@ -12,7 +12,7 @@ export class SearchService {
 
     //search Tag
     async searchTag(query: string) {
-        const tagResult = await knex.raw(`SELECT name FROM "tag" WHERE to_tsvector(name) @@ to_tsquery('${query}');`)
+        const tagResult = await knex.raw(`SELECT name FROM "tag" WHERE to_tsvector(name) @@ plainto_tsquery('${query}');`)
         if (tagResult.rows.length > 0) {
             return tagResult.rows;
         } else {
@@ -24,7 +24,7 @@ export class SearchService {
 
     //search User
     async searchUser(query: string) {
-        const userResult = await knex.raw(`SELECT name FROM "user" WHERE to_tsvector(name) @@ to_tsquery('${query}');`)
+        const userResult = await knex.raw(`SELECT name FROM "user" WHERE to_tsvector(name) @@ plainto_tsquery('${query}');`)
         if (userResult.rows.length > 0) {
             return userResult.rows;
         } else {
@@ -35,7 +35,7 @@ export class SearchService {
 
     //search Article
     async searchArticle(query: string) {
-        const articleResult = await knex.raw(`SELECT title FROM "article" WHERE to_tsvector(title) @@ to_tsquery('${query}');`)
+        const articleResult = await knex.raw(`SELECT title FROM "article" WHERE to_tsvector(title) @@ plainto_tsquery('${query}');`)
         if (articleResult.rows.length > 0) {
             return articleResult.rows;
         } else {

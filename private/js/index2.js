@@ -51,7 +51,7 @@ $(document).ready(async function () {
                     <ul class="navbar-item-search-table-users">
                         `;
                     for (let i = 0; i < users.user.length; i++) {
-                        search_table.innerHTML += `<a href="#">
+                        search_table.innerHTML += `<a >
                             <li class="navbar-item-search-table-user"><img
                                     src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> ${users.user[i].name}</li>
                         </a>`;
@@ -91,7 +91,7 @@ $(document).ready(async function () {
                     <ul class="navbar-item-search-table-users">
                         `;
                     for (let i = 0; i < tags.tag.length; i++) {
-                        search_table.innerHTML += `<a href="#">
+                        search_table.innerHTML += `<a >
                             <li class="navbar-item-search-table-user"><i class="fas fa-tag"></i> ${tags.tag[i].name}</li>
                         </a>`;
                     }

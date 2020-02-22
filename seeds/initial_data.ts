@@ -45,24 +45,30 @@ export async function seed(knex: Knex): Promise<any> {
     const articleCsv = await fs.promises.readFile(path.join(__dirname, '../scrape_medium/data/medium_article.csv'));
     let articleDetails: ImportArticle[] = await neatCsv(articleCsv);
 
+    const photo = []
+    for (let index = 0; index < 16; index++) {
+        photo.push(articleDetails[index].content.split('</noscript>')[0].split('<noscript>')[1]);
+    }
+ 
+    
 
     const article_ids = await knex('article').insert([
-        { title: `${articleDetails[0].title}`, content: `${articleDetails[0].content}`, reading_time: 4, user_id: raviId },
-        { title: `${articleDetails[1].title}`, content: `${articleDetails[1].content}`, reading_time: 4, user_id: raviId },
-        { title: `${articleDetails[2].title}`, content: `${articleDetails[2].content}`, reading_time: 4, user_id: raviId },
-        { title: `${articleDetails[3].title}`, content: `${articleDetails[3].content}`, reading_time: 4, user_id: raviId },
-        { title: `${articleDetails[4].title}`, content: `${articleDetails[4].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[5].title}`, content: `${articleDetails[5].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[6].title}`, content: `${articleDetails[6].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[7].title}`, content: `${articleDetails[7].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[8].title}`, content: `${articleDetails[8].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[9].title}`, content: `${articleDetails[9].content}`, reading_time: 4, user_id: matthewId },
-        { title: `${articleDetails[10].title}`, content: `${articleDetails[10].content}`, reading_time: 4, user_id: lexieId },
-        { title: `${articleDetails[11].title}`, content: `${articleDetails[11].content}`, reading_time: 4, user_id: lexieId },
-        { title: `${articleDetails[12].title}`, content: `${articleDetails[12].content}`, reading_time: 4, user_id: lexieId },
-        { title: `${articleDetails[13].title}`, content: `${articleDetails[13].content}`, reading_time: 4, user_id: lexieId },
-        { title: `${articleDetails[14].title}`, content: `${articleDetails[14].content}`, reading_time: 4, user_id: lexieId },
-    ]).returning('id');
+        { title: `${articleDetails[0].title}`, content: `${articleDetails[0].content}`, reading_time: 4, user_id: raviId, photo: photo[0]},
+        { title: `${articleDetails[1].title}`, content: `${articleDetails[1].content}`, reading_time: 4, user_id: raviId, photo: photo[1]},
+        { title: `${articleDetails[2].title}`, content: `${articleDetails[2].content}`, reading_time: 4, user_id: raviId, photo: photo[2]},
+        { title: `${articleDetails[3].title}`, content: `${articleDetails[3].content}`, reading_time: 4, user_id: raviId, photo: photo[3]},
+        { title: `${articleDetails[4].title}`, content: `${articleDetails[4].content}`, reading_time: 4, user_id: matthewId, photo: photo[4]},
+        { title: `${articleDetails[5].title}`, content: `${articleDetails[5].content}`, reading_time: 4, user_id: matthewId, photo: photo[5]},
+        { title: `${articleDetails[6].title}`, content: `${articleDetails[6].content}`, reading_time: 4, user_id: matthewId, photo: photo[6]},
+        { title: `${articleDetails[7].title}`, content: `${articleDetails[7].content}`, reading_time: 4, user_id: matthewId, photo: photo[7]},
+        { title: `${articleDetails[8].title}`, content: `${articleDetails[8].content}`, reading_time: 4, user_id: matthewId, photo: photo[8]},
+        { title: `${articleDetails[9].title}`, content: `${articleDetails[9].content}`, reading_time: 4, user_id: matthewId, photo: photo[9]},
+        { title: `${articleDetails[10].title}`, content: `${articleDetails[10].content}`, reading_time: 4, user_id: lexieId, photo: photo[10]},
+        { title: `${articleDetails[11].title}`, content: `${articleDetails[11].content}`, reading_time: 4, user_id: lexieId, photo: photo[11]},
+        { title: `${articleDetails[12].title}`, content: `${articleDetails[12].content}`, reading_time: 4, user_id: lexieId, photo: photo[12]},
+        { title: `${articleDetails[13].title}`, content: `${articleDetails[13].content}`, reading_time: 4, user_id: lexieId, photo: photo[13]},
+        { title: `${articleDetails[14].title}`, content: `${articleDetails[14].content}`, reading_time: 4, user_id: lexieId, photo: photo[14]}
+    ]).returning('id')
 
     await knex('bookmark').insert([
         { user_id: lexieId, article_id: article_ids[0] },
@@ -118,4 +124,5 @@ export async function seed(knex: Knex): Promise<any> {
         { user_id: matthewId, tag_id: tag_ids[1] },
         { user_id: matthewId, tag_id: tag_ids[2] }
     ]).returning('id');
+    
 };

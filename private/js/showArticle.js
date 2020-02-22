@@ -6,7 +6,7 @@ window.onload = async () => {
     })
     const result = await res.json()
 
-
+   
     console.log(result);
     const tagArticles = result.article
 
@@ -17,11 +17,14 @@ window.onload = async () => {
         for (const article of tagArticle) {
             console.log(article);
             const tagName = article.tag_name.toUpperCase();
-
+            
             let articleCreateDate = article.created_at.split('T')[0];
             const month = new Date(articleCreateDate).toLocaleString("en-us", { month: "short" });
             articleCreateDate = month + ' ' + articleCreateDate.split('-')[2] + ', ' + articleCreateDate.split('-')[0]
 
+            if (!article.photo){
+                article.photo = "";
+            }
 
             const html = /*html*/
                 `<div class="col-9 center-left-item">
@@ -38,7 +41,7 @@ window.onload = async () => {
                 </div>
             </div>
             <div class="col-3 cemter-left-image">
-                <img src="https://miro.medium.com/max/12000/0*Nm6YR258nleQ3_PN"">
+                ${article.photo}
             </div>`
 
             document.querySelector('#topic-article').innerHTML += html

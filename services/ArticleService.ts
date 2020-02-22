@@ -89,7 +89,7 @@ export class ArticleService {
     async getTagsArticle(tag:string) {
 
         const articles = await this.knex.raw(/*sql*/`
-            SELECT article.title, article.content, "user".id as author_id, tag.name as tag_name, article.created_at , article.id as article_id FROM article
+            SELECT article.title, article.content, "user".id as author_id, tag.name as tag_name, article.created_at , article.id as article_id, article.photo FROM article
                 JOIN "user" on "user".id = article.user_id
                 JOIN "article_tag" on article_tag.article_id = article.id
                 JOIN "tag" on tag.id = article_tag.tag_id
@@ -122,7 +122,7 @@ export class ArticleService {
         }
 
         // console.log({articleResult:articleResult});
-
+        console.log(articleResult);
         return articleResult;
         // return {articles:articles , authorNames: authorName};
 

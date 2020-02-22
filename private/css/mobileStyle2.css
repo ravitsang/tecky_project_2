@@ -1,4 +1,4 @@
-@media only screen and (max-width: 730px) {
+@media screen and (max-width: 992px) {
     .container {
         padding: 0;
     }
@@ -60,9 +60,9 @@
         background-color: #fff;
         box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
         border-radius: 5px;
-        position: absolute;
         width: 250px;
-        left: 55%;
+        position: absolute;
+        left: 40%;
         top: 120%;
         display: none;
         padding: 10px;
@@ -74,7 +74,7 @@
         position: absolute;
         width: 250px;
         height: 80px;
-        left: 70%;
+        left: 60%;
         top: 120%;
         text-align: center;
         display: none;
@@ -88,7 +88,7 @@
         border-radius: 5px;
         position: absolute;
         width: 225px;
-        left: 85%;
+        left: 80%;
         top: 120%;
         text-align: center;
         justify-content: center;
@@ -152,7 +152,10 @@
     }
     .tag-menu {
         background-color: rgba(255, 255, 255, 1);
-        padding: 5px 0 5px 0;
+        padding: 5px 0 5px 0px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow-x: auto;
     }
     .tag-items {
         width: 100%;
@@ -160,6 +163,7 @@
         justify-content: center;
         align-items: center;
         margin: 0;
+        padding: 0;
     }
     .tag-item, .tag-item a {
         padding: 7px;

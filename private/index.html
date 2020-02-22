@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,10 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-    <link rel="stylesheet" href="css/mobileStyle2.css" />
     <link rel="stylesheet" href="css/style2.css" />
     <link rel="stylesheet" href="css/style3.css" />
+    <link rel="stylesheet" href="css/mobileStyle2.css" />
+    <link rel="stylesheet" href="css/mobileStyle3.css" />
     <link rel="stylesheet" href="css/top-section.css" />
     <link rel="stylesheet" href="css/center-section.css" />
 </head>
@@ -44,8 +46,9 @@
                             </div>
                         </div>
                     </li>
-                    <li class="navbar-item btn"><a href="#">Upgrade</a></li>
-                    <li class="navbar-item"><a href="#" id="navbar-item-userinfo-btn"><img src="./images/1_dmbNkD5D-u45r44go_cf0g.png"></a>
+                    <li class="navbar-item btn" id="upgrade_btn"><a href="#">Upgrade</a></li>
+                    <li class="navbar-item"><a href="#" id="navbar-item-userinfo-btn"><img
+                                src="./images/1_dmbNkD5D-u45r44go_cf0g.png"></a>
                         <div class="navbar-item-userinfo-table fixed-top" id="navbar-item-userinfo-table">
                             <div class="userinfo-table" id="userinfo-table">
                                 <div class="row">
@@ -54,7 +57,8 @@
                                     </div>
                                     <div class="col-8 userinfo">
                                         <div class="userinfo-table-name" id="userinfo-table-name">Matthew Choi</div>
-                                        <div class="userinfo-table-username" id="userinfo-table-username">@matthewchoi95</div>
+                                        <div class="userinfo-table-username" id="userinfo-table-username">@matthewchoi95
+                                        </div>
                                     </div>
                                     <div class="col-12 user-member">
                                         <a href="#">Become a member</a>
@@ -65,17 +69,19 @@
                                     <li class="userinfo-list-item"><a href="#">Stories</a></li>
                                     <li class="userinfo-list-item"><a href="#">Series</a></li>
                                     <li class="userinfo-list-item"><a href="#">Stats</a></li>
-                                    <li class="userinfo-list-item border-top border-bottom"><a href="#">Medium Partner Program</a></li>
+                                    <li class="userinfo-list-item border-top border-bottom"><a href="#">Medium Partner
+                                            Program</a></li>
                                     <li class="userinfo-list-item"><a href="#">Reading list</a></li>
                                     <li class="userinfo-list-item"><a href="#">Publications</a></li>
-                                    <li class="userinfo-list-item border-bottom"><a href="#">Customize your interests</a></li>
+                                    <li class="userinfo-list-item border-bottom"><a href="#">Customize your
+                                            interests</a></li>
                                     <li class="userinfo-list-item"><a href="#">Profile</a></li>
                                     <li class="userinfo-list-item"><a href="#">Settings</a></li>
                                     <li class="userinfo-list-item"><a href="#">Help</a></li>
                                     <li class="userinfo-list-item"><a href="/api/v1/logout">Sign out</a></li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                     </li>
 
@@ -83,30 +89,31 @@
             </div>
 
         </nav>
+        <div class="container-fluid"></div>
+
 
         <!-- tag Menu -->
         <div class="tag-menu sticky-top ">
-            <ul class="tag-items" id="tag-items">
-                <li class="tag-item is-active"><a href="#">HOME</a></li>
-                <li class="tag-item"><a href="#">ONEZERO</a></li>
-                <li class="tag-item"><a href="#">ELEMENTAL</a></li>
-                <li class="tag-item"><a href="#">GEN</a></li>
-                <li class="tag-item"><a href="#">ZORA</a></li>
-                <li class="tag-item"><a href="#">FORGE</a></li>
-                <li class="tag-item"><a href="#">HUMAN PARTS</a></li>
-                <li class="tag-item"><a href="#">MARKER</a></li>
-                <li class="tag-item"><a href="#">LEVEL</a></li>
-                <li class="tag-item"><a href="#">HEATED</a></li>
-                <li class="tag-item"><a href="#">DESIGN</a></li>
-                <li class="tag-item"><a href="#">MC</a></li>
-            </ul>
+            <span class="tag-item is-active"><a href="#">HOME</a></span>
+            <span class="tag-item"><a href="#">ONEZERO</a></span>
+            <span class="tag-item"><a href="#">ELEMENTAL</a></span>
+            <span class="tag-item"><a href="#">GEN</a></span>
+            <span class="tag-item"><a href="#">ZORA</a></span>
+            <span class="tag-item"><a href="#">FORGE</a></span>
+            <span class="tag-item"><a href="#">HUMAN PARTS</a></span>
+            <span class="tag-item"><a href="#">MARKER</a></span>
+            <span class="tag-item"><a href="#">LEVEL</a></span>
+            <span class="tag-item"><a href="#">HEATED</a></span>
+            <span class="tag-item"><a href="#">DESIGN</a></span>
+            <span class="tag-item"><a href="#">MC</a></span>
         </div>
+
 
         <!-- Top Section -->
         <div class="top-section ">
             <div class="row">
                 <!-- Top left -->
-                <div class="col-5 top-left">
+                <div class="col-lg-5 col-md-6 col-12 top-left">
                     <a href="#">
                         <div class="top-left-image">
                             <img src="./images/0_cF-7zKh4jqldcDf2.jfif">
@@ -126,7 +133,7 @@
                     </div>
                 </div>
                 <!-- Top center -->
-                <div class="col-4 top-center">
+                <div class="col-lg-4 col-6 top-center">
                     <div class="row top-center-item">
                         <div class="col-4 top-center-image">
                             <img src="./images/1_iPem80PqRGBFvYsJ0CIzGg.jpeg">
@@ -164,7 +171,7 @@
 
                 </div>
                 <!-- Top right -->
-                <div class="col-3 top-right ">
+                <div class="col-lg-3 top-right ">
                     <div class="top-right-image"><img src="./images/0_5s371FuGmnS1KZ3j.jpg"></div>
                     <div class="top-right-content">
                         <div class="top-right-title">14 Non-Sexual Ways to Turn Your Lover On</div>
@@ -186,147 +193,13 @@
         <div class="center-section ">
             <!-- Center left -->
             <div class="row">
-                <div class="col-7 center-left">
+                <div class="col-7 col-lg-7 center-left">
                     <div class="row" id="topic-article">
-                        <!-- <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
 
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div>
-
-                        <div class="col-9 center-left-item ">
-                            <div class="center-left-type">BASED ON YOUR READING HISTORY</div>
-                            <div class="center-left-title">The most important skill a programmer can learn</div>
-                            <div class="center-left-desc">The best code is no code at all.</div>
-                            <div class="center-left-user-blog">Huseyin Polat Yuruk in freeCodeCamp.org</div>
-                            <div class="center-left-item-btn d-flex justify-content-between">
-                                <div class="center-left-date">May 15, 2019</div>
-                                <div class="d-flex">
-                                    <div class="center-left-bookmark"><i class="far fa-bookmark"></i></div>
-                                    <div class="center-left-ellipsis"><i class="fas fa-ellipsis-h"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-3 cemter-left-image">
-                            <img src="./images/0_XG0c4KW0GKI5h3Sq.jfif">
-                        </div> -->
                     </div>
                 </div>
                 <!-- Center right -->
-                <div class="center-right col-3">
+                <div class="center-right col-3 col-lg-3">
                     <div class="center-right-name ">Popular on Medium</div>
                     <div class="center-right-items">
                         <div class="row center-right-item d-flex">

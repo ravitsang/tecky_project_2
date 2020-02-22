@@ -1,14 +1,13 @@
-@media screen and (min-width: 730px) {
+@media only screen and (max-width: 730px) {
     .container {
         padding: 0;
     }
     .navbar {
         background-color: rgba(255, 255, 255, 1);
-        padding: 15px;
+        padding: 10px;
     }
     .navbar-menu {
         width: 100%;
-        position: absolute;
     }
     .navbar-items {
         display: flex;

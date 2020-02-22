@@ -1,15 +1,15 @@
-@media  screen and (min-width: 730px) {
+@media only screen and (max-width: 730px) {
     .container {
         padding: 0;
     }
     .navbar {
         background-color: rgba(255, 255, 255, 0.8);
-        padding: 15px;
+        padding: 20px 0 32px 0;
+        display: flex;
+        justify-content: space-between;
     }
     .navbar-menu {
-        width: 100%;
-        top: 50%;
-        position: absolute;
+        width: 95%;
     }
     .navbar-items {
         display: flex;
@@ -22,6 +22,11 @@
         height: 36px;
         position: relative;
     }
+    .navbar-logo {
+        position: absolute;
+        padding: 0 0 0 15px;
+        top: 20%;
+    }
     .navbar-items a {
         color: rgba(0, 0, 0, 0.8);
         text-decoration-line: none;
@@ -29,15 +34,10 @@
     .navbar-items a:hover {
         color: rgba(0, 0, 0, 1);
     }
-    .navbar-logo {
-        position: absolute;
-        top: 20%;
-        padding: 0 0 0 -10px;
-    }
     .navbar-item {
         width: 90px;
-        padding: 20px;
-        display: flex;
+        padding: 12px;
+        display: none;
         justify-content: center;
         align-items: center;
     }
@@ -59,14 +59,16 @@
         flex-direction: column;
     }
     .slogan {
-        padding: 32px;
+        padding: 32px 0 32px 0;
         width: 100%;
-        font-size: 4vw;
+        font-size: 55px;
         text-align: center;
         font-weight: bold;
     }
     .tag {
         width: 100%;
+        height: 285px;
+        overflow: hidden;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -106,6 +108,7 @@
         font-weight: bold;
         font-size: 20px;
         padding: 10px;
+        text-align: center;
     }
     .get-started-btn {
         display: flex;
@@ -134,22 +137,18 @@
     }
     .modal {
         background-color: rgba(255, 255, 255, 0.8);
+        width: 100%;
     }
     .modal-content.loginM {
-        background: url(../images/1_4A5l12K8ize1400kV83dPw.png), url(../images/1_XVLaTKHOGlnXqvnPe2Ahaw.png);
-        background-repeat: no-repeat, no-repeat;
-        background-position: left, right;
-        background-size: auto;
         background-color: #fff;
         border: 0;
     }
     .modal-content.regM {
-        background: url(../images/1_MQH4A5bsyRz4AWh5V4IfvQ.png), url(../images/1_lhbp8cxKdkDB-MgmwIPE5w.png);
-        background-repeat: no-repeat, no-repeat;
-        background-position: left, right;
-        background-size: auto;
         background-color: #fff;
         border: 0;
+    }
+    .modal-spec {
+        display: none;
     }
     .panel {
         width: 100%;
@@ -162,7 +161,7 @@
         padding: 15px;
     }
     .modalForm {
-        width: 50%;
+        width: 90%;
     }
     .modalSocial {
         padding: 25px;
@@ -190,7 +189,8 @@
     }
     .modalFooter {
         margin-top: 15px;
-        padding: 50px;
+        padding: 50px 0 50px 0;
+        width:100%;
         font-size: 14px;
         color: gray;
     }

@@ -39,14 +39,15 @@ export class ArticleService {
 
 
     // retrieve an article of a user
-    async retrieve(article_id: number) {
-        const article = await this.knex.raw(/*sql*/`
+    async retrieve(articleId: number) {
+        const articleResult = await this.knex.raw(/*sql*/`
             SELECT * FROM "article"
-                WHERE id = :article_id`,
+                WHERE article.id = :article_id`,
             {
-                article_id: article_id
+                article_id: articleId
             })
-        return article;
+            console.log(articleResult.rows);
+        return articleResult.rows;
 
 
     }
@@ -85,16 +86,16 @@ export class ArticleService {
 
 // select * from tag_user where tag_user.user_id = 591
 
-    async getTagsArticle(tags:string[]) {
+    async getTagsArticle(tag:string) {
 
         const articles = await this.knex.raw(/*sql*/`
-            SELECT title, content, tag.name as tag_name, "user".id as user_id, article.user_id as author_id  FROM "article"
+            SELECT article.title, article.content, tag.name as tag_name, "user".id as user_id, article.user_id as author_id, article.created_at , article.id as article_id FROM "article"
                 JOIN "user" on "user".id = article.user_id
                 JOIN "tag_user" on tag_user.user_id = "user".id
                 JOIN "tag" on tag_user.tag_id = tag.id
-                WHERE tag.name = :tagName`,
+                WHERE tag.name = :tagName  `,
                 {
-                    tagName:tags[1]
+                    tagName:tag
                 })
 
         let articleResult = await articles.rows;

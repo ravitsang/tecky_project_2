@@ -46,3 +46,8 @@
     padding:10px;
     text-align: left;
 }
+
+.content img{
+    width: 100%;
+    display: none;
+}

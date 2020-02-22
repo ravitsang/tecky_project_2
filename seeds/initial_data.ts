@@ -1,6 +1,8 @@
 import * as Knex from "knex";
 import * as fs from 'fs';
 import * as path from "path";
+import * as neatCsv from 'neat-csv';
+import { ImportArticle } from '../model/importCsvModel';
 
 export async function seed(knex: Knex): Promise<any> {
 
@@ -40,25 +42,26 @@ export async function seed(knex: Knex): Promise<any> {
     ]).returning('id');
 
     
-    let html = await fs.promises.readFile(path.join(__dirname,'../test_md/test3.md'));
+    const articleCsv = await fs.promises.readFile(path.join(__dirname, '../scrape_medium/data/medium_article.csv'));
+    let articleDetails: ImportArticle[] = await neatCsv(articleCsv);
+
 
     const article_ids = await knex('article').insert([
-        { title: 'How to Scrape Data from Web Pages for Sentiment Analysis?', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: '100 Days of Code — Day 5 of 100', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: 'Scrapping the content of single-page application (SPA) with headless Chrome and puppeteer', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: 'Scalable do-it-yourself scraping — How to build and run scrapers on a large scale', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: 'How to web scrape with Puppeteer in Google Cloud Functions', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: 'How to scrape websites with Python and BeautifulSoup', content: `${html}`, reading_time: 4, user_id: raviId },
-        { title: 'Webscrape with Java, NodeJs & Python', content: `${html}`, reading_time: 4, user_id: lexieId },
-        { title: 'How to get the next page on Beautiful Soup', content: `${html}`, reading_time: 4, user_id: lexieId },
-        { title: 'How to do Web Scraping with Ruby?', content: `${html}`, reading_time: 4, user_id: lexieId },
-        { title: 'Web Scraping with Python and BeautifulSoup', content: `${html}`, reading_time: 4, user_id: matthewId },
-        { title: 'Visual Web Scraping Tools: What to Do When They Are No Longer Fit For Purpose?', content: `${html}`, reading_time: 4, user_id: matthewId },
-        { title: 'master web scraping : understand the big picture', content: `${html}`, reading_time: 4, user_id: matthewId },
-        { title: 'Learn web app development while solving a real world problem', content: `${html}`, reading_time: 4, user_id: matthewId },
-        { title: 'How to Scrape Data from Web Pages', content: "- [Scrapy](https://scrapy.org/)", reading_time: 4, user_id: matthewId },
-        { title: 'Get the request', content: "[** **requests](https://2.python-requests.org/en/master/).", reading_time: 4, user_id: lexieId },
-        { title: 'Extract the data from the website', content: "**Make a request (1),", reading_time: 4, user_id: matthewId }
+        { title: `${articleDetails[0].title}`, content: `${articleDetails[0].content}`, reading_time: 4, user_id: raviId },
+        { title: `${articleDetails[1].title}`, content: `${articleDetails[1].content}`, reading_time: 4, user_id: raviId },
+        { title: `${articleDetails[2].title}`, content: `${articleDetails[2].content}`, reading_time: 4, user_id: raviId },
+        { title: `${articleDetails[3].title}`, content: `${articleDetails[3].content}`, reading_time: 4, user_id: raviId },
+        { title: `${articleDetails[4].title}`, content: `${articleDetails[4].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[5].title}`, content: `${articleDetails[5].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[6].title}`, content: `${articleDetails[6].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[7].title}`, content: `${articleDetails[7].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[8].title}`, content: `${articleDetails[8].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[9].title}`, content: `${articleDetails[9].content}`, reading_time: 4, user_id: matthewId },
+        { title: `${articleDetails[10].title}`, content: `${articleDetails[10].content}`, reading_time: 4, user_id: lexieId },
+        { title: `${articleDetails[11].title}`, content: `${articleDetails[11].content}`, reading_time: 4, user_id: lexieId },
+        { title: `${articleDetails[12].title}`, content: `${articleDetails[12].content}`, reading_time: 4, user_id: lexieId },
+        { title: `${articleDetails[13].title}`, content: `${articleDetails[13].content}`, reading_time: 4, user_id: lexieId },
+        { title: `${articleDetails[14].title}`, content: `${articleDetails[14].content}`, reading_time: 4, user_id: lexieId },
     ]).returning('id');
 
     await knex('bookmark').insert([

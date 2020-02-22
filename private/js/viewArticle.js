@@ -9,17 +9,13 @@ window.onload = async () =>{
 
     const result = await res.json();
 
-    // if (result){
+        
+    console.log(result);
+
+    console.log(result.article[0]);
 
 
-
-    // }
-    
-    // console.log(result);
-
-
-
-
-
+    document.querySelector('.title').innerHTML = result.article[0].title;
+    document.querySelector('.content').innerHTML = result.article[0].content;
 
 }

@@ -3,7 +3,7 @@ import { Article } from "./models";
 
 
 // const knexConfig = require('../knexfile');
-// const knex = Knex(knexConfig[process.env.NODE_ENV || "development"])
+// const knex = Knex(knexConfig["development"])
 
 
 
@@ -39,14 +39,15 @@ export class ArticleService {
 
 
     // retrieve an article of a user
-    async retrieve(article_id: number) {
-        const article = await this.knex.raw(/*sql*/`
+    async retrieve(articleId: number) {
+        const articleResult = await this.knex.raw(/*sql*/`
             SELECT * FROM "article"
-                WHERE id = :article_id`,
+                WHERE article.id = :article_id`,
             {
-                article_id: article_id
+                article_id: articleId
             })
-        return article;
+            console.log(articleResult.rows);
+        return articleResult.rows;
 
 
     }
@@ -66,18 +67,64 @@ export class ArticleService {
 
     }
 
+    async getUserTagName(userId: number) {
+        let tags = [];
+        const tagNameResult = await this.knex.raw(/*sql*/`
+            SELECT * FROM "tag_user"
+                JOIN "user" on "user".id = tag_user.user_id
+                JOIN "tag" on tag.id = tag_user.tag_id
+                WHERE "user".id = ${userId}`
+        )
+        for (const tag of tagNameResult.rows){
+            tags.push(tag.name)
+        }
+        
+        return tags;
 
-    // tag
-    async retrieveTagArticle(userId:number) {
+
+    }
+
+//  SELECT * FROM "article" JOIN "user" on "user".id = article.user_id JOIN "tag_user" on tag_user.user_id = "user".id JOIN "tag" on tag_user.tag_id = tag.id
+
+    async getTagsArticle(tag:string) {
+
         const articles = await this.knex.raw(/*sql*/`
-            SELECT title, content, tag.name as tag_name, "user".id FROM "article"
+            SELECT article.title, article.content, "user".id as author_id, tag.name as tag_name, article.created_at , article.id as article_id, article.photo FROM article
                 JOIN "user" on "user".id = article.user_id
-                JOIN "tag_user" on tag_user.user_id = "user".id
-                JOIN "tag" on tag_user.tag_id = tag.id
-                WHERE "user".id = ${userId}
-               `)
+                JOIN "article_tag" on article_tag.article_id = article.id
+                JOIN "tag" on tag.id = article_tag.tag_id
+                WHERE tag.name = :tagName `,
+                {
+                    tagName:tag
+                })
 
-        return articles;
+
+        let articleResult = await articles.rows;
+        
+        console.log({articleResult:articleResult});
+
+
+        let index = 0;
+        for (let article of articleResult){
+            
+            const authorId = await article.author_id;
+
+            const authorNameResult = await this.knex.raw(/*sql*/`
+                SELECT name FROM "user"
+                    WHERE "user".id = ${authorId} 
+                    `)
+
+            const authorName  = await authorNameResult.rows[0].name
+
+            articleResult[index].author_name = authorName;
+            index ++;
+                
+        }
+
+        // console.log({articleResult:articleResult});
+        console.log(articleResult);
+        return articleResult;
+        // return {articles:articles , authorNames: authorName};
 
 
     }
@@ -132,4 +179,4 @@ export class ArticleService {
 //     console.log(result);
 // }
 
-// test(492)
+// test(509)

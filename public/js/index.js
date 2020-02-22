@@ -25,6 +25,18 @@ document.querySelector('#login-email')
 
     })
 
+    
+// const searchParams = new URLSearchParams(window.location.search);
+// const errMessage = searchParams.get('error');
+// console.log(errMessage);
+// console.log('test');
+// if (errMessage) {
+//     document.querySelector('#loginerror-message').innerHTML = "";
+//     const alertBox = document.createElement('div');
+//     alertBox.textContent = `Please enter a valid email address or password.`;
+//     document.querySelector('#loginerror-message').appendChild(alertBox);
+// }
+
 
 
 document.querySelector('#reg-email')

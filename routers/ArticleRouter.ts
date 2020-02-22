@@ -3,8 +3,7 @@ import { ArticleService } from './../services/ArticleService';
 // import { TagService } from '../services/TagService';
 import * as express from 'express';
 import * as Knex from 'knex';
-import { Article } from '../services/models';
-
+// import { Article } from '../services/models';
 
 
 
@@ -27,7 +26,7 @@ export class ArticleRouter {
 
         // no need to call this.create()?
         router.get('/showTopic', this.retrieveTopicArticle)
-        router.post('/create', this.create)
+        router.get('/viewArticle', this.getFullArticle)
         // return the router to the main
         return router;
     }
@@ -35,32 +34,38 @@ export class ArticleRouter {
 
     // retrieve the articles related to certain topics
     retrieveTopicArticle = async (req: Request, res: Response) => {
-        // const article = req.body.article
-        // const userId = req.body.userId
-        const userId = 492;
 
-        const articles = await this.articleService.retrieveTagArticle(userId);
-        console.log('hi');
-        res.json({ article: articles.rows })
+        let allArticles = [];
+        const userId = req.user.id;
+        console.log(userId);
+        const tags = await this.articleService.getUserTagName(userId);
+        console.log({ tagName: tags });
+        for (let tag of tags) {
+            const articles = await this.articleService.getTagsArticle(tag);
+            allArticles.push(articles);
+        }
+        // const tag = tags[1]
+        // const articles = await this.articleService.getTagsArticle(tag);
+        // allArticles.push(articles);
+
+        console.log({ articles: allArticles });
+        res.json({ article: allArticles })
 
     }
 
     // create article
-    create = async (req: Request, res: Response) => {
-        const article: Article = req.body.article
-        const userId: number = req.body.userId
+    getFullArticle = async (req: Request, res: Response) => {
 
-        const articleId = await this.articleService.create(article, userId);
+        console.log("test");
+        const articleId :number  = parseInt(req.query.articleId);
+        console.log(articleId);
+        // const userId: number = req.body.userId
 
-
-        // if (article.tag){
-
-        //     await this.tagService.retrieve(article.tag);
-
-        // }
+        const article = await this.articleService.retrieve(articleId);
+        console.log({result:article});
 
 
-        res.json({ id: articleId })
+        res.json({ article: article })
 
     }
 

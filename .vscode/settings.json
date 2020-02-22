@@ -17,6 +17,16 @@
             "port": 5432,
             "server": "localhost",
             "username": "sinwaitsang"
-        }
+        },
+        {
+            "database": "tecky_project_2",
+            "dialect": "PostgreSQL",
+            "name": "tecky_project_2",
+            "password": "sinwaitsang",
+            "port": 5432,
+            "server": "localhost",
+            "username": "sinwaitsang"
+          }
+          
     ]
 }

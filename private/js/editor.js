@@ -138,8 +138,8 @@ window.onload=()=>{
     document.querySelector('#submit-btn')
         .addEventListener('click',async (event)=>{
             const editorData = await editor.getData();
-            const title = editorData.match(/<h1>.*<\/h1>(.*)$/)[1]
-            const content = editorData.match(/<h1>(.*)<\/h1>/)[1]
+            const title = editorData.match(/<h1>(.*)<\/h1>/)[1]
+            const content = editorData.match(/<h1>.*<\/h1>(.*)$/)[1]
 
             // let domParser = new DOMParser();
             // let doc = domParser.parseFromString(editorData,'text/html');

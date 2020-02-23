@@ -90,8 +90,8 @@ export class ArticleRouter {
 
     getUserArticles = async (req:Request,res:Response)=>{
         const userId = parseInt(req.user.id)
-        await this.articleService.retrieveAll(userId)
-        res.json({success:true})
+        const articles = await this.articleService.retrieveAll(userId)
+        res.json({article:articles});
     }
 
     // update article

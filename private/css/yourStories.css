@@ -1,0 +1,29 @@
+.content-header{
+    margin-top: 30px;
+    padding: 15px;
+    padding-right: 0px;
+    display:flex;
+    justify-content: space-between;
+}
+
+.button{
+    background-color: white;
+    color: rgba(2, 158, 116, 0.85);
+    border-radius: 3px;
+    border-color: rgba(2, 158, 116, 0.85);
+    border-width: 1px;
+}
+
+.button:hover{
+    background-color: rgba(2, 158, 116, 1);
+    color: white;
+}
+
+.content{
+    padding: 15px;
+}
+
+.content div{
+    border-top: 1px;
+    border-color: lightgrey
+}

@@ -37,6 +37,15 @@
             "port": 5432,
             "server": "localhost",
             "username": "matthew"
+        },
+        {
+            "database": "project-two",
+            "dialect": "PostgreSQL",
+            "name": "project_2",
+            "password": "lexington",
+            "port": 5432,
+            "server": "localhost",
+            "username": "lexington"
         }
     ]
 }

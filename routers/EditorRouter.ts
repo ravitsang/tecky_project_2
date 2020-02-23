@@ -31,11 +31,9 @@ export class EditorRouter{
         try{
             const title = req.body.title;
             const content = req.body.content;
-            const userId = req.user.id
-            // console.log(title)
-            // console.log(content)
-            // console.log(userId)
-            const articleId = await this.editorService.create(title,content,userId);
+            const photo = req.body.photo;
+            const userId = req.user.id;
+            const articleId = await this.editorService.create(title,content,userId,photo);
             res.json({id:articleId})
         }catch(err){
             res.status(400).json({msg:err.message})

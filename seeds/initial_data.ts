@@ -20,7 +20,7 @@ export async function seed(knex: Knex): Promise<any> {
     const [raviId, lexieId, matthewId] = await knex('user').insert([
         { name: 'Ravi', password: '$2a$10$fC2s35gIiqDYbciSitrtt.IIdkRZvOHsngyW.Wo9AqatuxK7S5jsK', email: "14225425@life.hkbu.edu.hk", link: 'https://www.facebook.com/ravi.tsang' },
         { name: 'Lexie', password: '$2a$10$Tkb5Nko/AJMAs4NTNZR9U.x7NyH26/JVxxgZCVpWI2qgQnMvXt4rS', email: "lexingtonc852@gmail.com", link: 'https://www.facebook.com/ravi.tsang' },
-        { name: 'Matthew', password: '$2a$10$Tkb5Nko/AJMAs4NTNZR9U.x7NyH26/JVxxgZCVpWI2qgQnMvXt4rS', email: "matthewchoi123@gmail.com", link: 'https://www.facebook.com/ravi.tsang' }
+        { name: 'Matthew', password: '$2a$10$Tkb5Nko/AJMAs4NTNZR9U.x7NyH26/JVxxgZCVpWI2qgQnMvXt4rS', email: "matthewchoi95@gmail.com", link: 'https://www.facebook.com/ravi.tsang' }
     ]).returning('id');
 
     await knex('follower').insert([

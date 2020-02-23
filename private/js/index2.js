@@ -42,7 +42,7 @@ $(document).ready(async function () {
                 const tags = result[0];
                 const users = result[1];
                 const articles = result[2];
-                console.log(articles);
+                // console.log(articles);
                 if (users.user !== null) {
                     search_table.innerHTML += `<div class="navbar-item-search-table-item" id="peoples">
                     <div class="navbar-item-search-table-Title">
@@ -74,7 +74,7 @@ $(document).ready(async function () {
                             articleTitle = `${articles.article[i].title.substr(0, 18)} ...`;
                         }
                         if (!photo) {
-                            photo = ``;
+                            photo = `<img src="./images/article_image.png">`;
                         }
                         search_table.innerHTML += `<a href="/m/viewArticle.html?articleId=${articles.article[i].id}">
                             <li class="navbar-item-search-table-user publication">${photo} ${articleTitle}</li>

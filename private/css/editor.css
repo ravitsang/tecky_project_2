@@ -5,10 +5,9 @@
 }
 
 #editor{
-    margin-top: 30px;
     margin-left: auto;
     margin-right: auto;
-    width: 80%;
+    width: 70%;
 }
 
 .footer{
@@ -21,6 +20,9 @@
     border: 0;
     color: white;
     border-radius: 3px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-right: 15px;
 }
 .button:hover {
     background-color: rgba(2, 158, 116, 1);

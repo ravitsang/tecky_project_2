@@ -72,8 +72,6 @@ window.onload=()=>{
         }
     }
     
-    // ...
-    
     function MyCustomUploadAdapterPlugin( editor ) {
         editor.plugins.get( 'FileRepository' ).createUploadAdapter = ( loader ) => {
             // Configure the URL to the upload script in your back-end here!
@@ -104,8 +102,8 @@ window.onload=()=>{
                 'highlight',
                 '|',
                 'imageUpload',
-                "mediaEmbed",
                 'blockQuote',
+                "codeBlock",
                 'undo',
                 'redo'
             ]
@@ -116,49 +114,52 @@ window.onload=()=>{
                 'imageTextAlternative'
             ]
         },
-        mediaEmbed:{
-
-        }
     })
     .then(newEditor=>{
         editor = newEditor;
         const wordCountPlugin = editor.plugins.get( 'WordCount' );
         const wordCountWrapper = document.querySelector('#word-count');
-
-
-
         wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );
-        // displayStatus(editor);
     })
     .catch(error=>{
         console.error('There was a problem initializing the editor.',error);
     });
 
-
     document.querySelector('#submit-btn')
         .addEventListener('click',async (event)=>{
             const editorData = await editor.getData();
-            const title = editorData.match(/<h1>(.*)<\/h1>/)[1]
-            const content = editorData.match(/<h1>.*<\/h1>(.*)$/)[1]
-
-            // let domParser = new DOMParser();
-            // let doc = domParser.parseFromString(editorData,'text/html');
-            //     const title = doc.querySelector('h1').textContent;
-            //     console.log(title)
+            let title;
+            let content;
+            if(editorData.match(/<h1>.*<\/h1>(.*)$/)=== null){
+                alert("You haven't input content");
+            }else if(editorData.match(/<h1>(.*)<\/h1>/)[1] === "&nbsp;"){
+                alert("You haven't input title");
+            }else{
+                title = editorData.match(/<h1>(.*)<\/h1>/)[1]
+                content = editorData.match(/<h1>.*<\/h1>(.*)$/)[1]
+            }
+            let photo = null
+            if (editorData.match(/<img([^>]*)>/) !== null){
+                photo = editorData.match(/<img([^>]*)>/)[0]
+            }
+            // console.log(title)
+            // console.log(content)
+            // console.log(photo)
                 
-                const res = await fetch ('/editor/create',{
-                    method:"POST",
-                    headers:{
-                        "Content-Type":"application/json"
-                    },
-                    body: JSON.stringify({
-                        title:title,
-                        content:content
-                    })
-                });
-                const result = await res.json();
-                if (result.id) {
-                    window.location = "/m";
-                }
+            const res = await fetch ('/editor/create',{
+                method:"POST",
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body: JSON.stringify({
+                    title:title,
+                    content:content,
+                    photo:photo
+                })
+            });
+            const result = await res.json();
+            if (result.id) {
+                window.location = `/m/viewArticle.html?articleId=${result.id}`;
+            }
         })
 }

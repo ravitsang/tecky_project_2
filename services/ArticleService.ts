@@ -55,14 +55,17 @@ export class ArticleService {
 
     async getAuthorName(articleId: number) {
         const authorNameResult = await this.knex.raw(/*sql*/`
-            SELECT "user".name FROM "article"
+            SELECT "user".name, "user".photo FROM "article"
                 JOIN "user" on "user".id = article.user_id
                 WHERE article.id = :article_id`,
             {
                 article_id: articleId
             })
-        console.log({ authorNameResult: authorNameResult.rows[0].name });
-        return authorNameResult.rows[0].name;
+        // console.log({ authorNameResult: authorNameResult.rows[0].name });
+        return {
+            authorName: authorNameResult.rows[0].name,
+            authorPhoto: authorNameResult.rows[0].photo
+        };
 
 
     }

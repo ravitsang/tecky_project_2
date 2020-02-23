@@ -42,8 +42,10 @@
 .center-left-bookmark, .center-left-ellipsis {
     padding: 0 15px 0 0;
 }
-
-.cemter-left-image img {
+.center-left-image{
+    padding: 0 0 50px 0;
+}
+.center-left-image img {
     width: 152px;
     height: 143px;
 }

@@ -1,8 +1,11 @@
 .container {
     padding: 0;
 }
-a{
+
+a {
     cursor: pointer;
+    color: #000;
+    text-decoration-line: none;
 }
 
 .navbar {

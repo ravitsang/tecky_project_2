@@ -73,17 +73,17 @@ export class ArticleService {
 
 
     // retrieve all articles of a user
-    // async retrieveAll(user_id: number) {
-    //     const articles = await this.knex.raw(/*sql*/`
-    //         SELECT * FROM "article"
-    //             WHERE user_id = :user_id`,
-    //         {
-    //             user_id: user_id
-    //         })
-    //     return articles;
+    async retrieveAll(user_id: number) {
+        const articles = await this.knex.raw(/*sql*/`
+            SELECT * FROM "article"
+                WHERE user_id = :user_id`,
+            {
+                user_id: user_id
+            })
+        return articles;
 
 
-    // }
+    }
 
     async getUserTagName(userId: number) {
         let tags = [];

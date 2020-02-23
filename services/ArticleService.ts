@@ -47,7 +47,7 @@ export class ArticleService {
                 article_id: articleId
             })
         // console.log(articleResult.rows);
-            // console.log(articleResult.rows);
+        // console.log(articleResult.rows);
         return articleResult.rows;
 
 
@@ -55,14 +55,17 @@ export class ArticleService {
 
     async getAuthorName(articleId: number) {
         const authorNameResult = await this.knex.raw(/*sql*/`
-            SELECT "user".name FROM "article"
+            SELECT "user".name, "user".photo FROM "article"
                 JOIN "user" on "user".id = article.user_id
                 WHERE article.id = :article_id`,
             {
                 article_id: articleId
             })
-        console.log({ authorNameResult: authorNameResult.rows[0].name });
-        return authorNameResult.rows[0].name;
+        // console.log({ authorNameResult: authorNameResult.rows[0].name });
+        return {
+            authorName: authorNameResult.rows[0].name,
+            authorPhoto: authorNameResult.rows[0].photo
+        };
 
 
     }
@@ -115,7 +118,7 @@ export class ArticleService {
 
 
         let articleResult = await articles.rows;
-        
+
         // console.log({articleResult:articleResult});
 
 
@@ -160,11 +163,11 @@ export class ArticleService {
 
             await this.knex.destroy();
 
-            return true 
+            return true
         } catch (e) {
 
             console.log(e);
-            return false 
+            return false
         }
 
     }

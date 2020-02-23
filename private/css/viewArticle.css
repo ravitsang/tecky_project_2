@@ -1,0 +1,27 @@
+.article {
+    width: 65%;
+}
+
+.article-details {
+    padding: 5px 0 10px 0;
+}
+
+.article-image img {
+    width: 48px;
+    height: 48px;
+    border-radius: 45%;
+    margin: 5px;
+}
+
+.article-authorName {
+    color: #000;
+}
+
+.article-detail {
+    color: #757575;
+    font-size: 14px;
+}
+
+.article-date {
+    margin-right: 10px;
+}

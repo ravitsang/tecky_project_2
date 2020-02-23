@@ -1,0 +1,41 @@
+@media only screen and (max-width: 767px) {
+    .top-center {
+        display: none;
+    }
+    #upgrade_btn {
+        display: none;
+    }
+    .navbar-item-search-table {
+        background-color: #fff;
+        position: absolute;
+        width: 95%;
+        left: 1%;
+        top: 120%;
+        display: none;
+        padding: 10px;
+    }
+    .navbar-item-bell-table {
+        background-color: #fff;
+        position: absolute;
+        width: 95%;
+        left:1%;
+        top: 120%;
+        text-align: center;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .navbar-item-userinfo-table {
+        background-color: #fff;
+        position: absolute;
+        width: 95%;
+        left:1%;
+        top: 120%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        padding: 10px;
+    }
+}

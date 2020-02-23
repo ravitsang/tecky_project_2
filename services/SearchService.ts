@@ -35,7 +35,7 @@ export class SearchService {
 
     //search Article
     async searchArticle(query: string) {
-        const articleResult = await knex.raw(`SELECT title FROM "article" WHERE to_tsvector(title) @@ plainto_tsquery('${query}');`)
+        const articleResult = await knex.raw(`SELECT * FROM "article" WHERE to_tsvector(title) @@ plainto_tsquery('${query}');`)
         if (articleResult.rows.length > 0) {
             return articleResult.rows;
         } else {

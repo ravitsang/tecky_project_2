@@ -13,9 +13,9 @@ window.onload = async () => {
 
 
     for (const tagArticle of tagArticles) {
-        console.log(tagArticle);
+        // console.log(tagArticle);
         for (const article of tagArticle) {
-            console.log(article.content);
+            // console.log(article);
             const tagName = article.tag_name.toUpperCase();
 
             let articleCreateDate = article.created_at.split('T')[0];
@@ -27,10 +27,9 @@ window.onload = async () => {
             }
 
             const html = /*html*/
-                `<div class="col-9 center-left-item">
+                `<div class="col-9 col-lg-9 center-left-item">
                 <div class="center-left-type">BASED ON YOUR FAVOURITE TOPIC ${tagName}</div>
-                <a href="/m/viewArticle.html?articleId=${article.article_id}" class="center-left-title title" id=${article.article_id}>${article.title}
-                <div class="center-left-desc">The best code is no code at all.</div></a>
+                <a href="/m/viewArticle.html?articleId=${article.article_id}" class="center-left-title title" id=${article.article_id}>${article.title}</a>
                 <div class="center-left-user-blog">${article.author_name}</div>
                 <div class="center-left-item-btn d-flex justify-content-between">
                     <div class="center-left-date">${articleCreateDate}</div>
@@ -40,8 +39,8 @@ window.onload = async () => {
                     </div>
                 </div>
             </div>
-            <div class="col-3 cemter-left-image">
-                ${article.photo}
+            <div class="col-3 col-lg-3 cemter-left-image">
+            <a href="/m/viewArticle.html?articleId=${article.article_id}" class="center-left-title title">${article.photo}</a>
             </div>`
 
             document.querySelector('#topic-article').innerHTML += html

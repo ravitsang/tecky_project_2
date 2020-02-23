@@ -4,26 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medium - Get smarter about what matters to you.</title>
+    <title>Readium - Get smarter about what matters to you.</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/mobileStyle.css" />
 </head>
 
 <body>
+
     <div class="container">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="navbar-logo"><a class="navbar-brand" href="#">
-                    <h3>Medium</h3>
+                    <h3>Readium</h3>
                 </a>
             </div>
             <div class="navbar-menu">
                 <ul class="navbar-items">
                     <li class="navbar-item"><a href="#">Subscribe</a></li>
                     <li class="navbar-item"><a href="#">Write</a></li>
-                    <li class="navbar-item"><a href="#" data-toggle="modal" data-target="#loginModal">Sign in</a></li>
+                    <li class="navbar-item"><a href="#" data-toggle="modal" data-target="#loginModal">Sign in</a>
+                    </li>
                     <button type="button" class="button" data-toggle="modal" data-target="#regModal">Get
                         started</button>
 
@@ -236,7 +239,7 @@
                         <div class="modalSocial">
                             <a href="/auth/google" type="button" class="modalSocial-btn">Sign up with Google</a>
                             <button type="button" class="modalSocial-btn" data-dismiss="modal" data-toggle="modal"
-                            data-target="#regEmailModal">Sign up with email</button>
+                                data-target="#regEmailModal">Sign up with email</button>
                         </div>
                         <div class="modalSign-btn">
                             Already have an account? <a href="#" data-dismiss="modal" data-toggle="modal"
@@ -272,15 +275,19 @@
                             magic link to your inbox</div>
                         <div class="modalInput">
                             <form id="login-email" method="POST"
-                                class="formClass d-flex justify-content-center align-items-center flex-wrap" action="/login">
-                                <input type="text" placeholder="Your email" id="loginEmail" name="loginEmail" required/>
-                                <input type="password" placeholder="Your password" id="loginPassword" name="loginPassword" required/>
+                                class="formClass d-flex justify-content-center align-items-center flex-wrap"
+                                action="/login">
+                                <input type="text" placeholder="Your email" id="loginEmail" name="loginEmail"
+                                    required />
+                                <input type="password" placeholder="Your password" id="loginPassword"
+                                    name="loginPassword" required />
                                 <div id="loginerror-message"></div>
                                 <input type="submit" value="Continue" />
                             </form>
                         </div>
                         <div class="modalFooter modalSign-btn">
-                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal"><i class="fas fa-chevron-left fa-xs"></i> All sign in
+                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#loginModal"><i
+                                    class="fas fa-chevron-left fa-xs"></i> All sign in
                                 options</a>
                         </div>
 
@@ -310,14 +317,16 @@
                         <div class="modalInput">
                             <form id="reg-email" method="POST"
                                 class="formClass d-flex justify-content-center align-items-center flex-wrap">
-                                <input type="text" placeholder="Your email" id="regEmail" name="regEmail" required/>
-                                <input type="password" placeholder="Your password" id="regPassword" name="regPassword" required/>
+                                <input type="text" placeholder="Your email" id="regEmail" name="regEmail" required />
+                                <input type="password" placeholder="Your password" id="regPassword" name="regPassword"
+                                    required />
                                 <div id="regerror-message"></div>
                                 <input type="submit" value="Continue" />
                             </form>
                         </div>
                         <div class="modalFooter modalSign-btn">
-                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regModal"><i class="fas fa-chevron-left fa-xs"></i> All sign up
+                            <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#regModal"><i
+                                    class="fas fa-chevron-left fa-xs"></i> All sign up
                                 options</a>
                         </div>
 

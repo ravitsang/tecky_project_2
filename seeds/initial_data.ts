@@ -121,8 +121,8 @@ export async function seed(knex: Knex): Promise<any> {
         { user_id: raviId, tag_id: tag_ids[3] },
         { user_id: lexieId, tag_id: tag_ids[0] },
         { user_id: lexieId, tag_id: tag_ids[1] },
-        { user_id: matthewId, tag_id: tag_ids[1] },
-        { user_id: matthewId, tag_id: tag_ids[2] }
+        { user_id: matthewId, tag_id: tag_ids[0] },
+        { user_id: matthewId, tag_id: tag_ids[3] }
     ]).returning('id');
     
 };

@@ -1,0 +1,178 @@
+@media screen and (max-width: 992px) {
+    .container {
+        padding: 0;
+    }
+    .navbar {
+        background-color: rgba(255, 255, 255, 1);
+        padding: 10px;
+    }
+    .navbar-menu {
+        width: 100%;
+    }
+    .navbar-items {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 36px;
+        position: relative;
+    }
+    .navbar-items a {
+        color: rgba(0, 0, 0, 0.8);
+        text-decoration-line: none;
+    }
+    .navbar-items a:hover {
+        color: rgba(0, 0, 0, 1);
+    }
+    .navbar-item {
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    #navbar-item-search-btn.show {
+        animation: search-text-btn-show 0.5s;
+    }
+    .navbar-item-search-text {
+        margin: 0 0 0 15px;
+        display: none;
+    }
+    .navbar-item-search-text.show {
+        display: block;
+        margin: 0 150px 0 15px;
+    }
+    @keyframes search-text-btn-show {
+        0% {
+            transform: translate(0);
+        }
+        100% {
+            transform: translate(-170px);
+        }
+    }
+    .navbar-item-search-text input, .navbar-item-search-text input:focus {
+        border: 0;
+        outline: none;
+    }
+    .navbar-item-search-table {
+        background-color: #fff;
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+        width: 250px;
+        position: absolute;
+        left: 40%;
+        top: 120%;
+        display: none;
+        padding: 10px;
+    }
+    .navbar-item-bell-table {
+        background-color: #fff;
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+        position: absolute;
+        width: 250px;
+        height: 80px;
+        left: 60%;
+        top: 120%;
+        text-align: center;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+    .navbar-item-userinfo-table {
+        background-color: #fff;
+        box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
+        border-radius: 5px;
+        position: absolute;
+        width: 225px;
+        left: 80%;
+        top: 120%;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: none;
+        padding: 10px;
+    }
+    .navbar-item-userinfo-table.show {
+        display: flex;
+    }
+    .navbar-item-bell-table.show {
+        display: flex;
+    }
+    .navbar-item-search-table.show {
+        display: block;
+    }
+    .navbar-item-search-table-title {
+        color: #757575;
+        padding: 5px;
+    }
+    .navbar-item-search-table-title span {
+        color: #757575;
+        padding: 5px;
+    }
+    .navbar-item-search-table-Title {
+        padding: 5px;
+        border-bottom: 0.5px rgba(0, 0, 0, 0.5) solid;
+    }
+    .navbar-item-search-table-users {
+        list-style-type: none;
+        padding: 0px;
+        width: 100%;
+    }
+    .navbar-item-search-table-user {
+        padding: 5px;
+    }
+    .navbar-item-search-table-user i {
+        border-radius: 0;
+        margin: 9px;
+        color: #757575;
+    }
+    .navbar-item-search-table-item {
+        margin: 15px 0 15px 0;
+    }
+    .navbar-item-search-table-user.publication img {
+        border-radius: 0;
+    }
+    .navbar-item.btn {
+        width: 95px;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px rgba(0, 0, 0, 0.7) solid;
+    }
+    .navbar-item.btn:hover {
+        border: 1px rgba(0, 0, 0, 1) solid;
+    }
+    .navbar-item img {
+        border-radius: 50%;
+    }
+    .tag-menu {
+        background-color: rgba(255, 255, 255, 1);
+        padding: 5px 0 5px 0px;
+        box-sizing: border-box;
+        white-space: nowrap;
+        overflow-x: auto;
+    }
+    .tag-items {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    .tag-item, .tag-item a {
+        padding: 7px;
+        list-style-type: none;
+        text-decoration-line: none;
+        font-size: 14px;
+        color: rgba(0, 0, 0, 0.6);
+    }
+    .tag-item a:hover, .tag-item.is-active a {
+        color: rgba(0, 0, 0, 1);
+    }
+}

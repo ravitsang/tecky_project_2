@@ -7,6 +7,10 @@
 .center-left-item {
     padding: 0 0 50px 0;
 }
+.center-left-item a{
+    text-decoration-line: none;
+    color:#000;
+}
 
 .center-left-type {
     color: #757575;
@@ -81,4 +85,13 @@
 .center-right-date {
     color: #757575;
     font-size: 13px;
+}
+@media only screen and (max-width: 992px) {
+    .center-right{
+        display: none;
+    }
+    
+    .center-left {
+        margin: 45px 0 0 45px;
+    }
 }

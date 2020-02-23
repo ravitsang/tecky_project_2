@@ -63,6 +63,7 @@ export class ArticleRouter {
         // const userId: number = req.body.userId
 
         const article = await this.articleService.retrieve(articleId);
+        // console.log({result:article});
 
         const authorName = await this.articleService.getAuthorName(articleId);
 

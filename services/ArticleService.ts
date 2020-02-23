@@ -47,6 +47,7 @@ export class ArticleService {
                 article_id: articleId
             })
         // console.log(articleResult.rows);
+            // console.log(articleResult.rows);
         return articleResult.rows;
 
 
@@ -114,7 +115,7 @@ export class ArticleService {
 
 
         let articleResult = await articles.rows;
-
+        
         // console.log({articleResult:articleResult});
 
 

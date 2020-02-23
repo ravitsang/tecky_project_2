@@ -42,6 +42,7 @@ $(document).ready(async function () {
                 const tags = result[0];
                 const users = result[1];
                 const articles = result[2];
+                console.log(articles);
                 if (users.user !== null) {
                     search_table.innerHTML += `<div class="navbar-item-search-table-item" id="peoples">
                     <div class="navbar-item-search-table-Title">
@@ -50,7 +51,7 @@ $(document).ready(async function () {
                     <ul class="navbar-item-search-table-users">
                         `;
                     for (let i = 0; i < users.user.length; i++) {
-                        search_table.innerHTML += `<a href="#">
+                        search_table.innerHTML += `<a >
                             <li class="navbar-item-search-table-user"><img
                                     src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> ${users.user[i].name}</li>
                         </a>`;
@@ -67,9 +68,16 @@ $(document).ready(async function () {
                     <ul class="navbar-item-search-table-users">
                         `;
                     for (let i = 0; i < articles.article.length; i++) {
-                        search_table.innerHTML += `<a href="#">
-                            <li class="navbar-item-search-table-user publication"><img
-                                    src="./images/1_dmbNkD5D-u45r44go_cf0g.png"> ${articles.article[i].title}</li>
+                        let articleTitle = articles.article[i].title;
+                        let photo = articles.article[i].photo;
+                        if (articleTitle.length > 18) {
+                            articleTitle = `${articles.article[i].title.substr(0, 18)} ...`;
+                        }
+                        if (!photo) {
+                            photo = ``;
+                        }
+                        search_table.innerHTML += `<a href="/m/viewArticle.html?articleId=${articles.article[i].id}">
+                            <li class="navbar-item-search-table-user publication">${photo} ${articleTitle}</li>
                         </a>`;
                     }
                     search_table.innerHTML += `</ul>
@@ -83,7 +91,7 @@ $(document).ready(async function () {
                     <ul class="navbar-item-search-table-users">
                         `;
                     for (let i = 0; i < tags.tag.length; i++) {
-                        search_table.innerHTML += `<a href="#">
+                        search_table.innerHTML += `<a >
                             <li class="navbar-item-search-table-user"><i class="fas fa-tag"></i> ${tags.tag[i].name}</li>
                         </a>`;
                     }

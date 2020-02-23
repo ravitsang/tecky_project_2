@@ -28,6 +28,7 @@ export class ArticleRouter {
         router.get('/showTopic', this.retrieveTopicArticle)
         router.get('/viewArticle', this.getFullArticle)
         router.get('/:articleId', this.addBookmark)
+        router.get('/getUserArticles',this.getUserArticles)
         // return the router to the main
         return router;
     }
@@ -86,6 +87,13 @@ export class ArticleRouter {
         res.json({success:result})
 
     }
+
+    getUserArticles = async (req:Request,res:Response)=>{
+        const userId = parseInt(req.user.id)
+        await this.articleService.retrieveAll(userId)
+        res.json({success:true})
+    }
+
     // update article
     update() {
 

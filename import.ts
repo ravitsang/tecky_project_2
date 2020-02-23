@@ -81,7 +81,7 @@ async function importData() {
                         user_id: userResult.rows[0].id
                     })
 
-                console.log(articleDetail.tag);
+                // console.log(articleDetail.tag);
                 const tags = articleDetail.tag.split(',');
                 // console.log(tags);
                 for (let tag of tags) {
@@ -91,17 +91,17 @@ async function importData() {
 
                         tagList.push(tag)
 
-                        console.log(tag);
+                        // console.log(tag);
                         const tagResult = await trx.raw(/* sql */ `
                             INSERT INTO "tag" ("name")
                                 VALUES(:name) RETURNING id`,
                             {
                                 name: tag
                             })
-                        console.log(tagResult);
+                        // console.log(tagResult);
                         tagMap[tag] = tagResult.rows[0].id;
                     }
-                    console.log(tagList);
+                    // console.log(tagList);
                     await trx.raw(/* sql */ `
                         INSERT INTO "article_tag" ("article_id","tag_id")
                             VALUES(:article_id,:tag_id)`,

@@ -27,6 +27,7 @@ export class ArticleRouter {
         // no need to call this.create()?
         router.get('/showTopic', this.retrieveTopicArticle)
         router.get('/viewArticle', this.getFullArticle)
+        router.get('/:articleId', this.addBookmark)
         // return the router to the main
         return router;
     }
@@ -37,39 +38,53 @@ export class ArticleRouter {
 
         let allArticles = [];
         const userId = req.user.id;
-        console.log(userId);
+        // console.log(userId);
         const tags = await this.articleService.getUserTagName(userId);
-        console.log({ tagName: tags });
+        // console.log({ tagName: tags });
         for (let tag of tags) {
             const articles = await this.articleService.getTagsArticle(tag);
+            
             allArticles.push(articles);
         }
         // const tag = tags[1]
         // const articles = await this.articleService.getTagsArticle(tag);
         // allArticles.push(articles);
 
-        console.log({ articles: allArticles });
+        // console.log({ articles: allArticles });
         res.json({ article: allArticles })
 
     }
 
-    // create article
+
     getFullArticle = async (req: Request, res: Response) => {
 
-        console.log("test");
         const articleId :number  = parseInt(req.query.articleId);
-        console.log(articleId);
+        // console.log(articleId);
         // const userId: number = req.body.userId
 
         const article = await this.articleService.retrieve(articleId);
-        console.log({result:article});
 
+        const authorName = await this.articleService.getAuthorName(articleId);
 
-        res.json({ article: article })
+        
+        // console.log({result:article});
+
+        res.json({ article: article, authorName:authorName })
 
     }
 
+    addBookmark = async (req: Request, res: Response) =>{
+        const userId = parseInt(req.user.id);
+        console.log(req.params);
+        const articleId = parseInt(req.params.articleId);
+        console.log({articleId:articleId});
+        console.log({userId:userId});
+        const result = await this.articleService.addBookmark(articleId,userId);
 
+        console.log(result);
+        res.json({success:result})
+
+    }
     // update article
     update() {
 

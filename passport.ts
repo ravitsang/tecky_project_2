@@ -23,8 +23,8 @@ passport.use(new LocalStrategy({
     },
 
     async function (email, password, done) {
-        console.log(email);
-        console.log(password);
+        // console.log(email);
+        // console.log(password);
         const retrieve = await userService.retrieve();
         const users: User[] = await retrieve.rows;
         const found = users.find(user => user.email === email);

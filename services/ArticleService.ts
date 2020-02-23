@@ -47,7 +47,7 @@ export class ArticleService {
                 article_id: articleId
             })
         // console.log(articleResult.rows);
-            // console.log(articleResult.rows);
+        // console.log(articleResult.rows);
         return articleResult.rows;
 
 
@@ -115,7 +115,7 @@ export class ArticleService {
 
 
         let articleResult = await articles.rows;
-        
+
         // console.log({articleResult:articleResult});
 
 
@@ -145,6 +145,28 @@ export class ArticleService {
     }
 
 
+    async isBookmarkExist(articleId: number, userId: number) {
+
+
+        const result = await this.knex.raw(/*sql*/`
+        SELECT * FROM "bookmark"
+            WHERE ("article_id" = :article_id AND "user_id" = :user_id)`,
+            {
+                article_id: articleId,
+                user_id: userId
+            }
+        )
+        console.log({result:result.length});
+
+        if (result.rows.length === 0){
+            return false
+        }else{
+            return true
+        }
+
+    }
+
+
     async addBookmark(articleId: number, userId: number) {
 
         try {
@@ -152,21 +174,41 @@ export class ArticleService {
 
                 await trx.raw(/*sql*/`
                     INSERT INTO "bookmark" ("user_id", "article_id")
-                        VALUES (:userId, :articleId)`, {
-                    userId: userId,
-                    articleId: articleId
-                })
+                        VALUES (:userId, :articleId)`,
+                    {
+                        userId: userId,
+                        articleId: articleId
+                    })
+
+                // console.log({ result: result.rows });
             })
 
             await this.knex.destroy();
 
-            return true 
+            return true
         } catch (e) {
 
             console.log(e);
-            return false 
+            return false
         }
 
+    }
+
+    async editBookmarkStatus(articleId: number, userId: number, bookmarked: string) {
+
+
+        const deleteResult = await this.knex.raw(/*sql*/`
+        UPDATE "bookmark"
+            SET ("delete" = :delete_data)
+            WHERE "article_id" = :article_id AND "user_id" = :user_id`,
+            {
+                user_id: userId,
+                article_id: articleId,
+                delete_data: true
+            }
+        )
+
+        console.log({ deleteResult: deleteResult.rows });
     }
 
     // update article

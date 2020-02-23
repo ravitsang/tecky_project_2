@@ -55,7 +55,7 @@ passport.use('google', new OAuth2Strategy({
     tokenURL: "https://accounts.google.com/o/oauth2/token",// OAuth client use this token and ask OAuth provider to get the permission of accessing data of user
     clientID: GOOGLE_CLIENT_ID ? GOOGLE_CLIENT_ID : "",
     clientSecret: GOOGLE_CLIENT_SECRET ? GOOGLE_CLIENT_SECRET : "",
-    callbackURL: "http://localhost:8080/auth/google/callback" // impressive flow/ no need tokenURL // get the token from this url
+    callbackURL: "http://readium.tk/auth/google/callback" // impressive flow/ no need tokenURL // get the token from this url
 },
     // use the accessToken and ask ask OAuth provider to grant the permission of accessing data of user
     // no refreshToken and profile / different provider will have different settings

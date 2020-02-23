@@ -27,7 +27,7 @@ export class ArticleRouter {
         // no need to call this.create()?
         router.get('/showTopic', this.retrieveTopicArticle)
         router.get('/viewArticle', this.getFullArticle)
-        router.get('/:articleId', this.addBookmark)
+        router.get('/:articleId/:bookmarked', this.addBookmark)
         // return the router to the main
         return router;
     }
@@ -78,12 +78,24 @@ export class ArticleRouter {
         const userId = parseInt(req.user.id);
         console.log(req.params);
         const articleId = parseInt(req.params.articleId);
+        const bookmarked = req.params.bookmarked;
+        console.log({bookmarked:bookmarked});
         console.log({articleId:articleId});
         console.log({userId:userId});
-        const result = await this.articleService.addBookmark(articleId,userId);
 
-        console.log(result);
-        res.json({success:result})
+        const isBookmarkExist = await this.articleService.isBookmarkExist(articleId,userId);
+        console.log({isBookmarkExist:isBookmarkExist});
+        if (isBookmarkExist){
+            const result = await this.articleService.editBookmarkStatus(articleId,userId,bookmarked);
+            console.log({editBookmarkStatus:result});
+            res.json({success:result})
+        }else{
+            const result = await this.articleService.addBookmark(articleId,userId);
+            console.log({addBookmark:result});
+            res.json({success:result})
+        }
+
+
 
     }
     // update article

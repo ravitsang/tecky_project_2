@@ -62,13 +62,32 @@ window.onload = async () => {
             console.log(event.target);
             const articleId = event.target.id;
             console.log(articleId);
-            const result = await fetch(`/article/${articleId}`);
-
-            if (result.success){
-                console.log(event.target);
-
-
+            // console.log(bookmark.firstChild);
+            // console.log(bookmark.firstChild.class);
+    
+     
+            const bookmarked = document.querySelector('.fa-bookmark').classList.contains('fas');
+            console.log(bookmarked);
+            if(bookmarked){
+                document.querySelector('.fa-bookmark').classList.add('far');
+                document.querySelector('.fa-bookmark').classList.remove('fas')
+                bookmark.innerHTML = `<i id="${articleId}" class="far fa-bookmark"></i>`
+            }else{
+                document.querySelector('.fa-bookmark').classList.add('fas');
+                document.querySelector('.fa-bookmark').classList.remove('far')
+                bookmark.innerHTML = `<i id="${articleId}" class="fas fa-bookmark"></i>`
             }
+
+           
+            const res = await fetch(`/article/${articleId}/${bookmarked}`);
+
+            
+            console.log(await res.json());
+            // if (result.success){
+            //     console.log(event.target);
+
+
+            // }
 
 
         })

@@ -26,7 +26,7 @@ window.onload=()=>{
         _initRequest() {
             const xhr = this.xhr = new XMLHttpRequest();
     
-            xhr.open( 'POST', 'https://readium.tk/m/editor/upload', true );
+            xhr.open( 'POST', '/editor/upload', true );
             xhr.responseType = 'json';
         }
     

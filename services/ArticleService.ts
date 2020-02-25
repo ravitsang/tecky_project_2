@@ -211,6 +211,8 @@ export class ArticleService {
             }
         )
 
+        
+
         console.log({ deleteResult: deleteResult.rows });
     }
 

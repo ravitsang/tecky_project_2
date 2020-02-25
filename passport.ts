@@ -55,9 +55,11 @@ passport.use('google', new OAuth2Strategy({
     tokenURL: "https://accounts.google.com/o/oauth2/token",// OAuth client use this token and ask OAuth provider to get the permission of accessing data of user
     clientID: GOOGLE_CLIENT_ID ? GOOGLE_CLIENT_ID : "",
     clientSecret: GOOGLE_CLIENT_SECRET ? GOOGLE_CLIENT_SECRET : "",
-    callbackURL: "https://readium.tk/auth/google/callback"
-    // callbackURL: "http://localhost:8080/auth/google/callback"
+    
     // impressive flow/ no need tokenURL // get the token from this url
+
+    // callbackURL: "https://readium.tk/auth/google/callback"
+    callbackURL: "http://localhost:8080/auth/google/callback"
 },
     // use the accessToken and ask ask OAuth provider to grant the permission of accessing data of user
     // no refreshToken and profile / different provider will have different settings
@@ -75,8 +77,10 @@ passport.use('google', new OAuth2Strategy({
         
         // console.log(`found: ${found}`);
         if (!found) {
-            const createResult = await userService.createUser(result.email, await hashPassword(Math.random().toString(36).substring(7)))
-            found = await createResult.rows[0]
+            const createResult :boolean|any = await userService.createUser(result.email, await hashPassword(Math.random().toString(36).substring(7)))
+            if (createResult){
+                found = await createResult.rows[0]
+            }
         }
         // console.log(found);
         console.log('OAuth2Strategy');

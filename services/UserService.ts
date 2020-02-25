@@ -33,15 +33,39 @@ export class UserService {
 
     // passport
     async createUser(email: string, password: string) {
-        const name = email.split('@')[0];
-        console.log(name);
-        const result = await knex.raw(/*sql*/ `INSERT INTO "user" ("name","email","password") VALUES(:name, :email, :password) RETURNING id`, {
-            name: name,
-            email: email,
-            password: await hashPassword(password)
-        });
-        console.log(result);
-        return result
+
+        await knex.transaction(async trx =>{
+            
+            const name = email.split('@')[0];
+            console.log(name);
+            const result = await trx.raw(/*sql*/ `INSERT INTO "user" ("name","email","password") VALUES(:name, :email, :password) RETURNING id`, {
+                name: name,
+                email: email,
+                password: await hashPassword(password)
+            });
+    
+            const userId = result.rows[0].id
+            console.log({userId:userId});
+            const tagResult = await knex.raw(/*sql*/`SELECT name, tag.id FROM "tag"
+                WHERE tag.name = 'Programming' `)
+    
+            const tagId = tagResult.rows[0].id
+            console.log({tagId:tagId});
+    
+            await knex.raw(/*sql*/ `
+                INSERT INTO "tag_user" ("user_id","tag_id")
+                VALUES(:user_id, :tag_id)`,
+            {
+                user_id: userId,
+                tag_id:tagId
+            });
+            
+            await trx.rollback();
+            return result
+        })    
+
+        await knex.destroy();
+        return false;
     }
 
     //retrieve

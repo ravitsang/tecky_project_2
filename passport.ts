@@ -34,6 +34,7 @@ passport.use(new LocalStrategy({
         }
         //Checking the password using hash function
         const match = await checkPassword(password, found.password);
+        console.log(match);
         if (match) {
             //Sub into serializeUser, can access user later
             console.log('localStrategy');
@@ -55,11 +56,12 @@ passport.use('google', new OAuth2Strategy({
     tokenURL: "https://accounts.google.com/o/oauth2/token",// OAuth client use this token and ask OAuth provider to get the permission of accessing data of user
     clientID: GOOGLE_CLIENT_ID ? GOOGLE_CLIENT_ID : "",
     clientSecret: GOOGLE_CLIENT_SECRET ? GOOGLE_CLIENT_SECRET : "",
-    
+    callbackURL: "http://localhost:8080/auth/google/callback"
+    // callbackURL: "http://localhost:8080/auth/google/callback"
     // impressive flow/ no need tokenURL // get the token from this url
 
     // callbackURL: "https://readium.tk/auth/google/callback"
-    callbackURL: "http://localhost:8080/auth/google/callback"
+    // callbackURL: "http://localhost:8080/auth/google/callback"
 },
     // use the accessToken and ask ask OAuth provider to grant the permission of accessing data of user
     // no refreshToken and profile / different provider will have different settings

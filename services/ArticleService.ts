@@ -49,8 +49,18 @@ export class ArticleService {
         // console.log(articleResult.rows);
         // console.log(articleResult.rows);
         return articleResult.rows;
+    }
 
-
+    // can join two tables together
+    async retrieveWithAuthor(articleId:number){
+        const articleResult = await this.knex.raw(`
+            SELECT article.* , user.name, user.photo    FROM "article"
+               INNER JOIN "user" on "user".id = article.user_id
+               WHERE article.id = :article_id
+        `,{
+            article_id: articleId
+        });
+        return articleResult.rows;
     }
 
     async getAuthorName(articleId: number) {
@@ -202,7 +212,7 @@ export class ArticleService {
 
         const deleteResult = await this.knex.raw(/*sql*/`
         UPDATE "bookmark"
-            SET ("delete" = :delete_data)
+            SET "delete" = :delete_data
             WHERE "article_id" = :article_id AND "user_id" = :user_id`,
             {
                 user_id: userId,
@@ -211,7 +221,7 @@ export class ArticleService {
             }
         )
 
-        
+
 
         console.log({ deleteResult: deleteResult.rows });
     }

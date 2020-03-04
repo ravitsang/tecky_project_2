@@ -60,11 +60,12 @@ export class UserService {
                 tag_id:tagId
             });
             
-            await trx.rollback();
+            // await trx.rollback();
             return result
+           
         })    
 
-        await knex.destroy();
+        // await knex.destroy();
         return false;
     }
 

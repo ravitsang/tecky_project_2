@@ -26,7 +26,7 @@ window.onload=()=>{
         _initRequest() {
             const xhr = this.xhr = new XMLHttpRequest();
     
-            xhr.open( 'POST', 'http://localhost:8080/editor/upload', true );
+            xhr.open( 'POST', '/editor/upload', true );
             xhr.responseType = 'json';
         }
     
@@ -80,6 +80,9 @@ window.onload=()=>{
     }
     
     let editor;
+
+
+    
     BalloonEditor
     .create(document.querySelector('#editor'),{
         extraPlugins: [ MyCustomUploadAdapterPlugin ],
@@ -117,6 +120,9 @@ window.onload=()=>{
     })
     .then(newEditor=>{
         editor = newEditor;
+        editor.model.document.on( 'change:data', () => {
+            console.log( 'The data has changed!' );
+        } );
         const wordCountPlugin = editor.plugins.get( 'WordCount' );
         const wordCountWrapper = document.querySelector('#word-count');
         wordCountWrapper.appendChild( wordCountPlugin.wordCountContainer );

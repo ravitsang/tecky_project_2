@@ -10,7 +10,6 @@ import * as passport from "passport";
 import * as Knex from 'knex';
 import { EditorRouter } from './routers/EditorRouter';
 import { EditorService } from './services/EditorService';
-import './passport';
 import { loginFlow, isLoggedIn } from './guards';
 
 const knexConfig = require('./knexfile');
@@ -43,6 +42,7 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 app.use(passport.session());
 
+import './passport';
 app.use(express.static(`public`));
 
 app.post('/api/v1/login',

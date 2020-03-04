@@ -3,7 +3,7 @@ import * as Knex from "knex";
 
 export async function up(knex: Knex): Promise<any> {
     await knex.schema.alterTable('article',table =>{
-        table.boolean("delete").defaultTo(false);
+        table.boolean("delete").defaultTo(false); /*column can be called deleted, is_active*/ 
     })
 }
 

@@ -218,3 +218,7 @@
         padding: 5px;
     }
 }
+
+.navbar-logo{
+    z-index:100;
+}

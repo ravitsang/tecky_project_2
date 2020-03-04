@@ -17,7 +17,8 @@
     <div class="container">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-light">
-            <div class="navbar-logo"><a class="navbar-brand" href="#">
+            <div class="navbar-logo">
+                <a class="navbar-brand" href="">
                     <h3>Readium</h3>
                 </a>
             </div>
@@ -276,11 +277,11 @@
                         <div class="modalInput">
                             <form id="login-email" method="POST"
                                 class="formClass d-flex justify-content-center align-items-center flex-wrap"
-                                action="/login">
-                                <input type="text" placeholder="Your email" id="loginEmail" name="loginEmail"
+                                action="/api/v1/login">
+                                <input type="text" placeholder="Your email" id="loginEmail" name="email"
                                     required />
                                 <input type="password" placeholder="Your password" id="loginPassword"
-                                    name="loginPassword" required />
+                                    name="password" required />
                                 <div id="loginerror-message"></div>
                                 <input type="submit" value="Continue" />
                             </form>

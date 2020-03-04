@@ -84,21 +84,24 @@ export class ArticleRouter {
         console.log({bookmarked:bookmarked});
         console.log({articleId:articleId});
         console.log({userId:userId});
-
-        const isBookmarkExist = await this.articleService.isBookmarkExist(articleId,userId);
-        console.log({isBookmarkExist:isBookmarkExist});
-        if (isBookmarkExist){
-            const result = await this.articleService.editBookmarkStatus(articleId,userId,bookmarked);
-            console.log({editBookmarkStatus:result});
-            res.json({success:result})
-        }else{
-            const result = await this.articleService.addBookmark(articleId,userId);
-            console.log({addBookmark:result});
-            res.json({success:result})
+        // Can move to ArticleService to handle all of these.
+        try{
+            this.knex.transaction(async (trx)=>{
+                const isBookmarkExist = await this.articleService.isBookmarkExist(articleId,userId);
+                console.log({isBookmarkExist:isBookmarkExist});
+                if (isBookmarkExist){
+                    const result = await this.articleService.editBookmarkStatus(articleId,userId,bookmarked);
+                    console.log({editBookmarkStatus:result});
+                    res.json({success:result})
+                }else{
+                    const result = await this.articleService.addBookmark(articleId,userId);
+                    console.log({addBookmark:result});
+                    res.json({success:result})
+                }
+            })
+        }catch(e){
+            res.status(500).json({msg:e.message});
         }
-
-  
-
     }
 
     getUserArticles = async (req:Request,res:Response)=>{

@@ -50,11 +50,12 @@
 .photo img{
     width: 100%;
     height: 50%;
+
 }
 
-/* .content img{
-    display: none;
-} */
+.content img{
+ display:none;
+}
 
 
 

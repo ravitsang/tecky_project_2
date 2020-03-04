@@ -19,6 +19,7 @@ export class EditorRouter{
         return editorRouter;
     }
 
+    // no use
     getArticles = async (req:Request,res:Response)=>{
         try{
             res.json(await this.editorService.retrieve());
@@ -36,17 +37,17 @@ export class EditorRouter{
             const articleId = await this.editorService.create(title,content,userId,photo);
             res.json({id:articleId})
         }catch(err){
-            res.status(400).json({msg:err.message})
+            res.status(500).json({msg:err.message})
         }
     }
-
+    
     uploadImages = async(req:Request,res:Response)=>{
         try{
             console.log(req.file.filename)
             const url = path.join('/m/uploads',req.file.filename)
             res.json({url:url})
         }catch(err){
-            res.status(400).json({msg:err.message})
+            res.status(500).json({msg:err.message})
         }
     }
 }

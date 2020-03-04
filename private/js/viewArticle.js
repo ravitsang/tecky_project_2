@@ -23,10 +23,9 @@ window.onload = async () => {
 
 
     let photo = article.content.split('</noscript>')[0].split('<noscript>')[1];
-
-
+    
     if (!photo) {
-        photo = "";
+        photo = article.photo;
     }
     if (result.authorName.authorPhoto === null) {
         result.authorName.authorPhoto = `<img src="./images/1_dmbNkD5D-u45r44go_cf0g.png">`;

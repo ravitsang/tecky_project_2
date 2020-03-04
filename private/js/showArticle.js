@@ -5,7 +5,7 @@ window.onload = async () => {
         method: 'get'
     })
     const result = await res.json()
-
+    console.log(result);
 
     const tagArticles = result.article;
     const allArticle = [];
